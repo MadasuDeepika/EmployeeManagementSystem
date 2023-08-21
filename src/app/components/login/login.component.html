@@ -1,0 +1,52 @@
+<tui-root class="body">
+    <h4 class="text-white p-3">L<small>eave</small> M<small>anagement</small> S<small>ystem</small> </h4>
+    <form
+    class="b-form container d-flex flex-column gap-1"
+    [formGroup]="testForm"
+>
+    <h1 class="text-center mb-5 text-white">Login</h1>
+    <div>
+        <p class="wrapper wrapper_dark">
+            <tui-input
+                formControlName="email"
+                tuiMode="onDark"
+                [tuiTextfieldCleaner]="true"
+            >
+                Type an email
+                <input
+                    tuiTextfield
+                    placeholder="mail@mail.ru"
+                    type="email"
+                />
+            </tui-input>
+          
+        </p>
+    </div>
+    <div>
+        <p class="wrapper wrapper_dark">
+    <tui-input-password
+    formControlName="password"
+    class="tui-space_top-2"
+>
+    Type a password
+    <input
+        tuiTextfield
+        placeholder="Make it secure!"
+    />
+</tui-input-password>
+        </p>
+    </div>
+    <div class="tui-form__buttons">
+        <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="onSubmit()"
+        [disabled]="testForm.invalid"
+    >
+        Submit
+    </button>
+    </div>
+</form>
+
+</tui-root>
