@@ -1,10 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TUI_IS_CYPRESS } from '@taiga-ui/cdk';
-import { TuiAlertService, TuiDialogService, TuiTextfieldCleanerDirective } from '@taiga-ui/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { FirebaseService } from 'src/app/services/firebase.service';
+import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-login',

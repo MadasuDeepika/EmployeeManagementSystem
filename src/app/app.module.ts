@@ -14,7 +14,7 @@ import {
   TuiLinkModule
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +60,7 @@ import { MatSelectModule } from '@angular/material/select';
     TuiSidebarModule,
     TuiActiveZoneModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     {

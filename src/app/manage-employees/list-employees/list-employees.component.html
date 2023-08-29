@@ -1,0 +1,193 @@
+<div class="container">
+  
+    <!-- Navigation breadcrumbs -->
+    <tui-breadcrumbs size="l" class="tui-space_top-2 my-4">
+      <ng-container>
+        <a *tuiItem tuiLink> Manage </a>
+        <a *tuiItem tuiLink (click)="showForm = false"> Employees </a>
+      </ng-container>
+    </tui-breadcrumbs>
+  
+    <!-- add user form -->
+    <ng-template let-observer #form>
+      <app-userform [observer]="observer" (done)="addAlert()" [edit]="false"></app-userform>
+    </ng-template>
+  
+    <!-- View employee list -->
+  
+    <mat-form-field class="form-field d-none">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+    <div class="mt-lg-5" *ngIf="!showForm">
+      <div class="d-flex justify-content-between align-items-center">
+        <mat-form-field appearance="outline">
+          <mat-label>Filter </mat-label>
+          <input
+            matInput
+            type="email"
+            (keyup)="applyFilter($event)"
+            placeholder="Ex. John"
+            #input
+          />
+        </mat-form-field>
+        <div>
+        <button
+          tuiButton
+          appearance="flat"
+          class="me-2"
+          size="s"
+          (click)="loadUsers()"
+        >
+          <tui-svg src="tuiIconRefreshCwLarge"></tui-svg>
+        </button>
+        <button
+          tuiButton
+          appearance="secondary"
+          size="s"
+          (click)="showDialog(form)"
+        >
+          Add <tui-svg src="tuiIconUserPlus"></tui-svg>
+        </button>
+      </div>
+      </div>
+      <tui-loader size="xl" [showLoader]="load" [overlay]="true">
+        <div class="contain">
+          <mat-table
+            class="mat-table"
+            matSortActive="id"
+            matSortDirection="desc"
+            [dataSource]="dataSource"
+            matSort
+          >
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                ID
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="id">
+                {{ row.id }}
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                NAME
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="name">
+                {{ row.name }}
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                EMAIL
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="email">
+                {{ row.email }}
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="role">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                ROLE
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="role">
+                {{ row.role }}
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >ACTIONS</mat-header-cell
+              >
+              <mat-cell *matCellDef="let row" data-label="action">
+                <span>
+                  <div class="">
+                    <button
+                      tuiButton
+                      appearance="secondary"
+                      class="me-2 edit-icon"
+                      size="s"
+                      (click)="showDialog(editform)"
+                    >
+                      <tui-svg src="tuiIconEdit" ></tui-svg>
+                    </button>
+                    <!-- edit user form -->
+                    <ng-template let-observer #editform>
+                      <app-userform
+                        [observer]="observer"
+                        (done)="addAlert()"
+                        [Id]="row.id"
+                        [Name]="row.name"
+                        [email]="row.email"
+                        [position]="row.position"
+                        [edit]="true"
+                      ></app-userform>
+                    </ng-template>
+  
+                    <button
+                      tuiButton
+                      appearance="secondary-destructive"
+                      size="s"
+                      (click)="showDialog(template)"
+                    >
+                      <tui-svg src="tuiIconTrash2"></tui-svg>
+                    </button>
+  
+                    <!-- User Delete Dialog template  -->
+                    <ng-template #template let-observer>
+                      <p class="text-danger h4">Confirm Delete</p>
+                      <p>
+                        Are you sure you want to delete user
+                        {{ row.id | uppercase }}
+                      </p>
+                      <button
+                        tuiButton
+                        appearance="flat"
+                        type="button"
+                        size="m"
+                        (click)="observer.complete()"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        tuiButton
+                        appearance="secondary-destructive"
+                        type="button"
+                        size="m"
+                        class="tui-space_right-3"
+                        (click)="deleteUser(row.id); observer.complete()"
+                      >
+                        Delete
+                      </button>
+                    </ng-template>
+                  </div>
+                </span>
+              </mat-cell>
+            </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  
+            <!-- Row shown when there is no matching data. -->
+            <tr *matNoDataRow>
+              <td class="text-center text-muted pt-5 h2" colspan="4">
+                No Matching Data Found
+              </td>
+            </tr>
+          </mat-table>
+  
+          <mat-paginator
+            [pageSizeOptions]="[5, 10]"
+            aria-label="Select page of users"
+          ></mat-paginator>
+        </div>
+      </tui-loader>
+    </div>
+  </div>
+  

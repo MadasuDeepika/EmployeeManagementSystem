@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
 import { TUI_ARROW } from '@taiga-ui/kit';
 

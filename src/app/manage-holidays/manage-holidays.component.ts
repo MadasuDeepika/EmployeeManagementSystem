@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FirebaseService } from '../services/firebase.service';
+import { FirebaseService } from '../services/firebase/firebase.service';
 import { NgForm } from '@angular/forms';
 import { TuiDialogService } from '@taiga-ui/core';
 

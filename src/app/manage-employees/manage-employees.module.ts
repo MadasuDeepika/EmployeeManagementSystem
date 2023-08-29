@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManageEmployeesRoutingModule } from './manage-employees-routing.module';
-import { ManageEmployeesComponent } from './manage-employees.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -16,10 +15,11 @@ import {
   TuiSvgModule,
 } from '@taiga-ui/core';
 import { TuiItemModule } from '@taiga-ui/cdk';
-import { UserformComponent } from '../components/userform/userform.component';
+import { UserformComponent } from './userform/userform.component';
+import { ListEmployeesComponent } from './list-employees/list-employees.component';
 
 @NgModule({
-  declarations: [ManageEmployeesComponent],
+  declarations: [ListEmployeesComponent],
   imports: [
     CommonModule,
     ManageEmployeesRoutingModule,
@@ -35,7 +35,7 @@ import { UserformComponent } from '../components/userform/userform.component';
     TuiSvgModule,
     TuiDialogModule,
     TuiLoaderModule,
-    UserformComponent
+    UserformComponent,
   ],
 })
 export class ManageEmployeesModule {}

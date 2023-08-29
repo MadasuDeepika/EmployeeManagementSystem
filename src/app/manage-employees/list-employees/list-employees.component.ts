@@ -1,20 +1,16 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { FirebaseService } from '../services/firebase.service';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {
-  TuiAlertService,
-  TuiDialogContext,
-  TuiDialogService,
-} from '@taiga-ui/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
-  selector: 'app-manage-employees',
-  templateUrl: './manage-employees.component.html',
-  styleUrls: ['./manage-employees.component.scss'],
+  selector: 'app-list-employees',
+  templateUrl: './list-employees.component.html',
+  styleUrls: ['./list-employees.component.scss']
 })
-export class ManageEmployeesComponent {
+export class ListEmployeesComponent {
   showForm = false;
   users: any;
   dataSource!: MatTableDataSource<any>;
@@ -55,7 +51,7 @@ export class ManageEmployeesComponent {
   }
 
   deleteUser(id: string) {
-    this.fb.deleteUserById(id).subscribe((data) => {
+    this.fb.deleteUserById(id).subscribe((data:any) => {
       this.deleteAlert(id);
     });
   }
