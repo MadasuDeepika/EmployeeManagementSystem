@@ -43,9 +43,9 @@ export class ManageHolidaysComponent {
     this.dialogs.open(content).subscribe();
   }
 
-  filterHolidays(filterform: NgForm) {
+  filterHolidays(filtertext:string) {
     this.loader = true
-    let value = filterform.value.filter;
+    let value = filtertext;
     if (value) {
       let newData = this.holidays.filter((obj: any) =>
         obj.name.toLowerCase().includes(value.toLowerCase()) || obj.type.toLowerCase().includes(value.toLowerCase())

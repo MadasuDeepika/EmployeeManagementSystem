@@ -25,7 +25,7 @@
     />
   </mat-form-field>
   <div class="mt-lg-5" *ngIf="!showForm">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
       <mat-form-field appearance="outline">
         <mat-label>Filter </mat-label>
         <input
@@ -41,15 +41,15 @@
         tuiButton
         appearance="flat"
         class="me-2"
-        size="xl"
+        size="s"
         (click)="loadUsers()"
       >
-        Refresh <tui-svg src="tuiIconRefreshCw"></tui-svg>
+        <tui-svg src="tuiIconRefreshCwLarge"></tui-svg>
       </button>
       <button
         tuiButton
         appearance="secondary"
-        size="xl"
+        size="s"
         (click)="showDialog(form)"
       >
         Add <tui-svg src="tuiIconUserPlus"></tui-svg>
