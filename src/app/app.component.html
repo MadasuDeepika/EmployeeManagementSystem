@@ -1,3 +1,64 @@
 <tui-root>
-  <router-outlet></router-outlet>
+  <div class="body">
+    <!-- app navbar  -->
+    <div
+      class="d-flex appbar sticky-top overlay container-fluid justify-content-between align-items-center"
+    >
+      <div *ngIf="isAuthenticated$ | async" class="d-flex align-items-center">
+        <tui-svg
+          type="button"
+          src="tuiIconMenuLarge"
+          (click)="toggle(true)"
+          (tuiActiveZoneChange)="toggle($event)"
+        >
+          <!-- Nest the directive so it is considered the same active zone -->
+          <div *tuiSidebar="open; direction: 'left'">
+            <button
+              tuiButton
+              class="my-2"
+              appearance="outlined"
+              icon="tuiIconArrowLeftLarge"
+              (click)="toggle(false)"
+            >
+              Back
+            </button>
+            <tui-accordion [rounded]="true">
+              <tui-accordion-item borders="top-bottom">
+                Manage
+                <ng-template tuiAccordionItemContent>
+                  <a
+                    tuiLink
+                    *ngFor="let link of links"
+                    rel="noreferrer"
+                    (click)="redirect(link.href)"
+                    class="link d-flex flex-column my-2"
+                  >
+                    {{ link.name }}
+                  </a>
+                </ng-template>
+              </tui-accordion-item>
+            </tui-accordion>
+          </div>
+        </tui-svg>
+      </div>
+
+      <div class="logo">
+        L<small>eave</small> M<small>anagement</small> S<small>ystem</small>
+      </div>
+
+      <div
+        class="menu d-flex align-items-center gap-5"
+        *ngIf="isAuthenticated$ | async"
+      >
+        <tui-svg
+          src="tuiIconLogOutLarge"
+          type="button"
+          (click)="logout()"
+        ></tui-svg>
+      </div>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </tui-root>

@@ -1,11 +1,26 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
-
-.body{
-    height: 100vh;
-    overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1632059368252-be6d65abc4e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center content-box;
-    .b-form {
-        margin-top: 10rem;
-        width: 350px;
+// * {
+//     border: red 1px solid;
+// }
+.body {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  .content {
+    flex: 1 1 auto;
+    // background-color: rgba(#222,.5);
+    // color: white;
+  }
+  .appbar {
+    background-color: var(--tui-primary);
+    color: white;
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 1.3rem 0;
     }
+  }
+  .active-link {
+    outline: 1px solid rgba(white, 1);
+    color: white;
+  }
 }
