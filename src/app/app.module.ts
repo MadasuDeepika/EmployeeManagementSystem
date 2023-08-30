@@ -11,7 +11,7 @@ import {
   TuiDropdownModule,
   TuiHostedDropdownModule,
   TuiLoaderModule,
-  TuiLinkModule
+  TuiLinkModule,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -25,15 +25,15 @@ import {
   TuiInputModule,
   TuiInputPasswordModule,
 } from '@taiga-ui/kit';
-import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiActiveZoneModule, TuiItemModule } from '@taiga-ui/cdk';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, PagenotfoundComponent],
+  declarations: [AppComponent, PagenotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,6 +61,7 @@ import { MatSelectModule } from '@angular/material/select';
     TuiActiveZoneModule,
     MatTooltipModule,
     MatSelectModule,
+    SidebarComponent
   ],
   providers: [
     {
@@ -73,6 +74,4 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-
-}
+export class AppModule {}

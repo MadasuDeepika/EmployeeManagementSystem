@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: ''},
@@ -10,11 +9,11 @@ const routes: Routes = [
     loadComponent: () =>
       import('./components/landingpage/landingpage.component').then(
         (e) => e.LandingpageComponent
-      ),
+      ), 
   },
   {
     path: 'login',
-    component:LoginComponent,
+    loadComponent:()=> import('./components/login/login.component').then(e=>e.LoginComponent),
   },
   {
     path: 'admin',

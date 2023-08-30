@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
-  styleUrls: ['./list-employees.component.scss']
+  styleUrls: ['./list-employees.component.scss'],
 })
 export class ListEmployeesComponent {
   showForm = false;
@@ -23,7 +23,7 @@ export class ListEmployeesComponent {
     this.loadUsers();
   }
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'position', 'action'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -51,7 +51,7 @@ export class ListEmployeesComponent {
   }
 
   deleteUser(id: string) {
-    this.fb.deleteUserById(id).subscribe((data:any) => {
+    this.fb.deleteUserById(id).subscribe((data: any) => {
       this.deleteAlert(id);
     });
   }
@@ -62,12 +62,10 @@ export class ListEmployeesComponent {
     this.alerts
       .open(`Deleted user with id ${id}`, { label: 'Success' })
       .subscribe();
-      this.loadUsers()
+    this.loadUsers();
   }
   addAlert() {
-    this.alerts
-      .open(`Added new user`, { label: 'Success' })
-      .subscribe();
-      this.loadUsers()
+    this.alerts.open(`Added new user`, { label: 'Success' }).subscribe();
+    this.loadUsers();
   }
 }

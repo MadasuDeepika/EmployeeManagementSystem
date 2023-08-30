@@ -31,7 +31,7 @@ export class UserformComponent {
   @Output() done: EventEmitter<any> = new EventEmitter();
   constructor(private fb:FormBuilder,private db:FirebaseService){
   }
-  readonly roles = ['admin', 'employee', 'client'];
+  readonly roles = ['admin', 'employee'];
   userForm:any;
 
   ngOnChanges(changes: SimpleChanges){
