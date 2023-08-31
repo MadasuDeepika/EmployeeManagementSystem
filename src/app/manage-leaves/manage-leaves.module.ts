@@ -2,16 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ManageLeavesRoutingModule } from './manage-leaves-routing.module';
-import { ManageLeavesComponent } from './manage-leaves.component';
+import { LeaveListComponent } from './leave-list/leave-list.component';
+import { TuiBreadcrumbsModule } from '@taiga-ui/kit';
+import { TuiButtonModule, TuiLinkModule, TuiSvgModule } from '@taiga-ui/core';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
-    ManageLeavesComponent
+    LeaveListComponent
   ],
   imports: [
     CommonModule,
-    ManageLeavesRoutingModule
+    ManageLeavesRoutingModule,
+    TuiBreadcrumbsModule,
+    TuiLinkModule,
+    TuiSvgModule,
+    TuiButtonModule,
+    MatButtonModule,
   ]
 })
 export class ManageLeavesModule { }

@@ -1,82 +1,90 @@
-<p>list-holidays works!</p>
-<p>holidayform works!</p>
 <div class="container-island container">
-    <tui-breadcrumbs size="l" class="tui-space_top-2 my-4">
-      <ng-container>
-        <a *tuiItem tuiLink routerLink="/admin" > Manage </a>
-        <a *tuiItem tuiLink routerLink="/holidays" routerLinkActive="link-active">
-          Holidays
-        </a>
-      </ng-container>
-    </tui-breadcrumbs>
-    <div class="mb-3 d-flex justify-content-between align-items-center">
-        <mat-form-field
-        appearance="outline"
-        >
-          <mat-label>Filter</mat-label>
-          <input
-            matInput
-            (keyup)="filterHolidays(filter.value)"
-            placeholder="Ex. Republic Day"
-            name="filterText"
-            #filter
-          />
-        </mat-form-field>
-  
-      <div>
-        <button
-          tuiButton
-          appearance="flat"
-          class="me-2"
-          size="s"
-          (click)="loadHolidays()"
-        >
-          <tui-svg src="tuiIconRefreshCwLarge"></tui-svg>
-        </button>
-      <button tuiButton appearance="secondary" (click)="sortHolidays()" size="s"  type="button">
+  <tui-breadcrumbs size="l" class="py-4">
+    <ng-container>
+      <a *tuiItem tuiLink routerLink="/admin"> Manage </a>
+      <a *tuiItem tuiLink routerLink="/holidays" routerLinkActive="link-active">
+        Holidays
+      </a>
+    </ng-container>
+  </tui-breadcrumbs>
+  <div class="mt-lg-5 mb-3 d-flex justify-content-between align-items-center">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="filterHolidays(filter.value)"
+        placeholder="Ex. Republic Day"
+        name="filterText"
+        #filter
+      />
+    </mat-form-field>
+
+    <div>
+      <button
+        tuiButton
+        appearance="flat"
+        class="me-2"
+        size="s"
+        (click)="loadHolidays()"
+      >
+        <tui-svg src="tuiIconRefreshCwLarge"></tui-svg>
+      </button>
+      <button
+        tuiButton
+        appearance="secondary"
+        (click)="sortHolidays()"
+        size="s"
+        type="button"
+      >
         Sort
         <tui-svg src="tuiIconSortOff"></tui-svg>
       </button>
-        </div>
     </div>
-    <tui-loader size="xl" class="mt-3" [showLoader]="loader" [overlay]="true">
-      <div class="tui-row container-fluid">
-        <div class="col-12 col-md-4 col-lg-4 my-2" *ngFor="let item of holidays;let i=index">
-          <a
-            size="l"
-            class="island-card"
-            [ngClass]="upcomingDate(item.date) ? 'bg-green ' : 'bg-grey '"
-            tuiIsland
-            [hoverable]="true"
-          >
-            <div class="tui-island__content">
-              <figure class="tui-island__figure">
-                <div
-                  class="some-figure d-flex justify-content-center align-items-center"
-                  (click)="showDialog(editform)"
-                >
-                  <tui-svg type="button" src="tuiIconEditLarge" ></tui-svg>
-  
-                  <ng-template #editform let-observer>
-                    <app-holidayform [index]="i" [Name]="item.name" [type]="item.type" [date]="item.date"></app-holidayform>
-                  </ng-template>
-  
-                </div>
-              </figure>
-              <div>
-                <h3 class="tui-island__title">{{ item.name }}</h3>
-                <p class="tui-island__category">
-                  {{ item.type }}
-                </p>
-                <p class="tui-island__paragraph">
-                  {{ parseCustomDate(item.date) | date : "MMM-dd"
-                  }}{{ upcomingDate(item.date) ? "(Upcoming)" : "" }}
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </tui-loader>
   </div>
-  
+  <tui-loader size="xl" class="mt-3" [showLoader]="loader" [overlay]="true">
+    <div class="tui-row container-fluid">
+      <div
+        class="col-12 col-md-4 col-lg-4 my-2"
+        *ngFor="let item of holidays; let i = index"
+      >
+        <a
+          size="l"
+          class="island-card"
+          [ngClass]="upcomingDate(item.date) ? 'bg-green ' : 'bg-grey '"
+          tuiIsland
+          [hoverable]="true"
+        >
+          <div class="tui-island__content">
+            <figure class="tui-island__figure">
+              <div
+                class="some-figure d-flex justify-content-center align-items-center"
+                (click)="showDialog(editform)"
+              >
+                <tui-svg type="button" src="tuiIconEditLarge"></tui-svg>
+
+                <ng-template #editform let-observer>
+                  <app-holidayform
+                    [index]="i"
+                    [Name]="item.name"
+                    [type]="item.type"
+                    [date]="item.date"
+                  ></app-holidayform>
+                </ng-template>
+              </div>
+            </figure>
+            <div>
+              <h3 class="tui-island__title">{{ item.name }}</h3>
+              <p class="tui-island__category">
+                {{ item.type }}
+              </p>
+              <p class="tui-island__paragraph">
+                {{ item.date | date : "dd-MMM"
+                }}{{ upcomingDate(item.date) ? "(Upcoming)" : "" }}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </tui-loader>
+</div>

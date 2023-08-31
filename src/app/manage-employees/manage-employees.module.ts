@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { TuiBreadcrumbsModule } from '@taiga-ui/kit';
+import { TuiBreadcrumbsModule, TuiInputModule } from '@taiga-ui/kit';
 import {
   TuiButtonModule,
   TuiDialogModule,
@@ -36,6 +36,7 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
     TuiDialogModule,
     TuiLoaderModule,
     UserformComponent,
+    TuiInputModule
   ],
 })
 export class ManageEmployeesModule {}

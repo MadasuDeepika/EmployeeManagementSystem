@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManageLeavesComponent } from './manage-leaves.component';
+import { LeaveListComponent } from './leave-list/leave-list.component';
 
-const routes: Routes = [{ path: '', component: ManageLeavesComponent }];
+const routes: Routes = [
+  {path: '', component:LeaveListComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

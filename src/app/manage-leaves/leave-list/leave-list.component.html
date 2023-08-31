@@ -1,0 +1,26 @@
+<div class="container leave-container">
+  <tui-breadcrumbs size="l" class="py-4">
+    <ng-container>
+      <a *tuiItem tuiLink routerLink="/admin"> Manage </a>
+      <a *tuiItem tuiLink routerLink="/leaves" routerLinkActive="link-active">
+        Leaves
+      </a>
+    </ng-container>
+  </tui-breadcrumbs>
+  <div class="mt-lg-5 container d-flex flex-column flex-md-row gap-2">
+    <div class="card" *ngFor="let item of leaves">
+      <div class="card-header d-flex"><tui-svg src="tuiIconUser"></tui-svg>{{ item.id | uppercase }} <span class="ms-auto leave-type" [ngClass]="item.type"> {{item.type}}</span></div>
+      <div class="card-body">
+        <div >
+            <span class="text-muted">Reason:</span> <span style="text-decoration:underline;">{{item.reason}} </span><br>
+            <span class="text-muted">Date(s): </span>{{item.from | date:'dd-MMM'}}
+            <span class="text-muted"> - </span> {{item.to | date: 'dd-MMM'}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <button mat-stroked-button class="text-danger" >Reject<tui-svg src="tuiIconClose" class="ms-1"></tui-svg></button>
+        <button mat-stroked-button  class="ms-2 text-success">Accept<tui-svg src="tuiIconCheck" class="ms-1"></tui-svg></button>
+      </div>
+    </div>
+  </div>
+</div>
