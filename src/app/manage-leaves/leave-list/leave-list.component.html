@@ -7,7 +7,7 @@
       </a>
     </ng-container>
   </tui-breadcrumbs>
-  <div class="container d-flex flex-column flex-md-row gap-2">
+  <div class="mt-lg-5 container d-flex flex-column flex-md-row gap-2">
     <div class="card" *ngFor="let item of leaves">
       <div class="card-header d-flex"><tui-svg src="tuiIconUser"></tui-svg>{{ item.id | uppercase }} <span class="ms-auto leave-type" [ngClass]="item.type"> {{item.type}}</span></div>
       <div class="card-body">

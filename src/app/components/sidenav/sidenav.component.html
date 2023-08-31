@@ -12,7 +12,7 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="appbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -22,7 +22,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Leave Management System </span>
-      <button tuiButton appearance="outlined" class="ms-auto" (click)="logout()"> Logout
+      <button tuiLink appearance="outlined" class="ms-auto" (click)="logout()"> Logout
       <tui-svg  src="tuiIconLogOut"  class="ms-1"></tui-svg>
     </button>
     </mat-toolbar>
