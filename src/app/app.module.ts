@@ -60,8 +60,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     TuiSidebarModule,
     TuiActiveZoneModule,
     MatTooltipModule,
-    MatSelectModule,
-    SidebarComponent
+    MatSelectModule
   ],
   providers: [
     {
