@@ -58,6 +58,7 @@
       tuiButton
       type="button"
       class="tui-form__button"
+      [disabled]="userForm.invalid"
       (click)="onSubmit()"
     >
       Submit

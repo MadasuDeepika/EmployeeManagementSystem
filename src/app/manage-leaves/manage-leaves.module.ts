@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ManageLeavesRoutingModule } from './manage-leaves-routing.module';
 import { LeaveListComponent } from './leave-list/leave-list.component';
 import { TuiBreadcrumbsModule } from '@taiga-ui/kit';
-import { TuiButtonModule, TuiLinkModule, TuiSvgModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiLinkModule, TuiSvgModule, TuiLoaderModule} from '@taiga-ui/core';
 import { MatButtonModule } from '@angular/material/button';
 
 
@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     TuiSvgModule,
     TuiButtonModule,
     MatButtonModule,
+    TuiLoaderModule,
   ]
 })
 export class ManageLeavesModule { }

@@ -7,12 +7,14 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ['./leave-list.component.scss']
 })
 export class LeaveListComponent {
+  load = false
   constructor(private fb: FirebaseService){
     this.getLeaves()
   }
   leaves:any;
   getLeaves() {
-    this.fb.getLeaves().subscribe(leaves=> this.leaves = Object.values(leaves));
+    this.load = true
+    this.fb.getLeaves().subscribe(leaves=> {this.leaves = Object.values(leaves);this.load = false});
   }
   
 }
