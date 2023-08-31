@@ -1,66 +1,61 @@
-<div class="d-flex flex-column-reverse flex-lg-row body w-100 h-100 align-items-center">
-  <section
-    class="d-flex h-100 w-100 flex-column justify-content-center align-items-center hero-section"
-  >
-    <img
-      class="img-fluid"
-      src="https://educloud.app/lms/src/erp/ec-lms.png"
-      alt="abstract image of a team working"
-    />
-    <div class="hero-text my-3 w-75">
-      Leave Management Made Simple: Focus on Work, We Handle the Rest
-    </div>
-  </section>
-
-  <form
-    class="b-form w-50 mx-auto"
-    [formGroup]="loginForm"
-  >
+<section
+  class="d-flex flex-column justify-content-center align-items-center hero-section"
+>
+  <img
+    src="https://educloud.app/lms/src/erp/ec-lms.png"
+    alt="abstract image of a team working"
+  />
+  <div class="hero-text my-3 w-75 text-center">
+    Leave Management Made Simple: Focus on Work, We Handle the Rest
+  </div>
+</section>
+<section class="login-container">
+  <form class="login-form" [formGroup]="loginForm">
     <tui-loader size="xl" [showLoader]="load" [overlay]="true">
-        <h1 class="text-center tui-form__header">Login Form</h1>
-        <div>
-          <p class="wrapper wrapper_dark">
-            <tui-notification
-              status="error"
-              class="tui-space_vertical-4"
-              *ngIf="invalidPassword && loginForm.dirty"
-            >
-              Invalid Password
-            </tui-notification>
-            <tui-input
-              formControlName="id"
-              tuiMode="onDark"
-              [tuiTextfieldCleaner]="true"
-            >
-              Enter your ID*
-              <input tuiTextfield placeholder="PW###" type="text" />
-            </tui-input>
-          </p>
-        </div>
-        <div>
-          <p class="wrapper wrapper_dark">
-            <tui-input-password
-              formControlName="password"
-              class="tui-space_top-2"
-            >
-              Enter password*
-              <input tuiTextfield placeholder="" />
-            </tui-input-password>
-          </p>
-        </div>
-        <div class="tui-form__buttons">
-          <button
-            tuiButton
-            appearance="secondary"
-            type="button"
-            class="tui-form__button"
-            (click)="onSubmit()"
-            [disabled]="loginForm.invalid"
+      <h1 class="text-center tui-form__header">Login Form</h1>
+      <div>
+        <p class="wrapper wrapper_dark">
+          <tui-notification
+            status="error"
+            class="tui-space_vertical-4"
+            *ngIf="invalidPassword && loginForm.dirty"
           >
-            Login
-            <tui-svg src="tuiIconLogIn"></tui-svg>
-          </button>
-        </div>
+            Invalid Password
+          </tui-notification>
+          <tui-input
+            formControlName="id"
+            tuiMode="onDark"
+            [tuiTextfieldCleaner]="true"
+          >
+            Enter your ID*
+            <input tuiTextfield placeholder="PW###" type="text" />
+          </tui-input>
+        </p>
+      </div>
+      <div>
+        <p class="wrapper wrapper_dark">
+          <tui-input-password
+            formControlName="password"
+            class="tui-space_top-2"
+          >
+            Enter password*
+            <input tuiTextfield placeholder="" />
+          </tui-input-password>
+        </p>
+      </div>
+      <div class="tui-form__buttons">
+        <button
+          tuiButton
+          appearance="secondary"
+          type="button"
+          class="tui-form__button"
+          (click)="onSubmit()"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+          <tui-svg src="tuiIconLogIn"></tui-svg>
+        </button>
+      </div>
     </tui-loader>
   </form>
-</div>
+</section>

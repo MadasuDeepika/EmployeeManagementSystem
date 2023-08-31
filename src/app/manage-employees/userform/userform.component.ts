@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TuiInputModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TuiButtonModule, TuiErrorModule, TuiGroupModule, TuiLoaderModule } from '@taiga-ui/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
@@ -46,11 +46,11 @@ export class UserformComponent {
       });
     }else{
       this.userForm = this.fb.group({
-        id: [''],
-        name: [''],
-        email: [''],
-        password: [''],
-        position: [''],
+        id: ['',Validators.required],
+        name: ['',Validators.required],
+        email: ['',[Validators.required,Validators.email]],
+        password: ['',Validators.required],
+        position: ['',Validators.required],
         role: ['employee']
       });
     }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManageHolidaysComponent } from './manage-holidays.component';
+import { ListHolidaysComponent } from './list-holidays/list-holidays.component';
 
-const routes: Routes = [{path:'', component: ManageHolidaysComponent}];
+const routes: Routes = [{path:'', component: ListHolidaysComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

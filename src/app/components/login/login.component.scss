@@ -1,22 +1,29 @@
-.body {
-  section {
-    background-color: var(--tui-primary);
+$tui-primary: var(--tui-primary);
+:host {
+  display: flex;
+  height: 100%;
+  .hero-section {
+    background-color: $tui-primary;
     color: white;
-    height: 100%;
+    height: 100vh;
+    width: 50%;
     img {
-      width: 80%;
+      width: 60%;
     }
   }
-  .b-form {
-    min-width: 300px;
-    padding: 5rem 2rem;
-    border-radius: 10px;
-    // box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  .login-container{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-form {
+      width: 340px;
+      padding: 4rem 1rem;
+      border-radius: 10px;
+      // box-shadow: rgba(black,.1) 0px 20px 30px;
+    }
+  }
 
-  }
-  .hero-section {
-    width: 40vw;
-  }
   .hero-text {
     font-size: 1.1rem;
     font-weight: 400;
@@ -28,9 +35,14 @@
 }
 
 @media  (max-width: 992px) {
-    .b-form {
-        // position: absolute;
-        height: 50%;
-    }
+
+  :host {
+    flex-direction: column-reverse;
+    .hero-section {
+      height: 40vh;
+      width: 100%;
+    } 
     
+  }
+
 }

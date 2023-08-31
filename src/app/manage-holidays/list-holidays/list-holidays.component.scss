@@ -1,0 +1,34 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+.container-island {
+  // max-width: 62.5rem;
+  // margin: 0 auto;
+  .island-card {
+    box-shadow: none !important;
+    margin: 0 0.4rem;
+    height: auto;
+  }
+}
+
+.some-figure {
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  color: var(--tui-secondary-fill) !important;
+  background-color: var(--tui-secondary-active);
+}
+
+.bg-green {
+  outline: 1px solid var(--tui-success-bg-night);
+  color: var(--tui-positive);
+  &:hover {
+    outline: 1px solid var(--tui-success-bg-night-hover);
+  }
+}
+.bg-grey {
+  outline: 1px solid var(--tui-info-bg-night);
+  color: var(--tui-link);
+  &:hover {
+    outline: 1px solid var(--tui-info-bg-night-hover);
+  }
+}

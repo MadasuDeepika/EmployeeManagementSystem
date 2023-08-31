@@ -30,6 +30,13 @@ const routes: Routes = [
       e=> e.ManageHolidaysModule
     )
   },
+  {
+    path: 'leaves',
+    canActivate: [isAuthenticatedGuard],
+    loadChildren: () =>import('./manage-leaves/manage-leaves.module').then(
+      e=> e.ManageLeavesModule
+    )
+  },
   { path: '**', loadComponent:()=> import('./components/pagenotfound/pagenotfound.component').then(e=>e.PagenotfoundComponent) },
 ];
 

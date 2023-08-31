@@ -6,12 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FirebaseService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
   dbUserUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/.json';
   dbHolidayUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json';
+  dbLeavesUrl =
+    'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/.json';
+
+  requestLeave(leave: any) {
+    return this.http.post(this.dbLeavesUrl, leave);
+  }
 
   addUser(user: User): Observable<any> {
     return this.http.put(
@@ -20,24 +25,31 @@ export class FirebaseService {
     );
   }
 
-  addHoliday(holiday:any,id:any) {
+  addHoliday(holiday: any, id: any) {
     return this.http.put(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
       holiday
-    )
+    );
+  }
+
+  getLeaves(): Observable<any> {
+    return this.http.get(this.dbLeavesUrl);
   }
 
   getUsers(): Observable<any> {
     return this.http.get(this.dbUserUrl);
   }
 
-  updateHoliday(holiday:any,id:any) {
-    console.log(holiday,id);
-    
-    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,holiday)
+  updateHoliday(holiday: any, id: any) {
+    console.log(holiday, id);
+
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
+      holiday
+    );
   }
 
-  updateUser(user:any,id:any){
+  updateUser(user: any, id: any) {
     return this.http.patch(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}.json`,
       user
