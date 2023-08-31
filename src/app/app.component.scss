@@ -1,11 +1,15 @@
 // * {
 //     border: red 1px solid;
 // }
-:host {
+.body {
   display: flex;
   flex-flow: column;
+  height: 100vh;
+  .content {
+    flex: 1 1 auto;
+  }
   .appbar {
-    background-color:var(--tui-primary);
+    background-color:#222;
     color: #fff;
     .logo {
       font-size: 1.4rem;

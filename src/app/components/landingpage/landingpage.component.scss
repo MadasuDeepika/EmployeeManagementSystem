@@ -1,17 +1,8 @@
-:host {
-    height: 100%;
-  .hero-text {
+.hero-text {
     font-weight: 400;
     font-size: 1.2rem;
     line-height: 2rem;
-  }
-  img {
-    width: 40%;
-  }
 }
-
-@media (max-width: 767px) {
-    img {
-        width: 70%
-    }
+img {
+    width: 70%;
 }

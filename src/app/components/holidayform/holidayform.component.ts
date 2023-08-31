@@ -36,7 +36,9 @@ export class HolidayformComponent implements OnChanges{
   holidayForm:any;
   constructor(private fb: FormBuilder,private db:FirebaseService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {        
+  ngOnChanges(changes: SimpleChanges): void {   
+    console.log(this.index);
+     
     this.holidayForm = this.fb.group({
       name: [this.Name],
       type: [this.type],
