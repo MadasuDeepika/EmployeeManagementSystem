@@ -11,7 +11,6 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ['./list-employees.component.scss'],
 })
 export class ListEmployeesComponent {
-  showForm = false;
   users: any;
   dataSource!: MatTableDataSource<any>;
   load = false;
