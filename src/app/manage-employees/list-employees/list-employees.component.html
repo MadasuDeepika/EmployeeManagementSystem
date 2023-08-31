@@ -1,6 +1,6 @@
-<div class="admin-body">
+<div class="admin-body ">
   <!-- Navigation breadcrumbs -->
-  <tui-breadcrumbs size="l" class="tui-space_top-2 my-4 container">
+  <tui-breadcrumbs size="l" class="py-4 container">
     <ng-container>
       <a *tuiItem tuiLink> Manage </a>
       <a *tuiItem tuiLink> Employees </a>
@@ -11,7 +11,7 @@
 
   <div class="mt-lg-5 container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <mat-form-field class="form-field d-none" appearance="outline">
+      <mat-form-field class="form-field" appearance="outline">
         <mat-label>Filter</mat-label>
         <input
           matInput
@@ -20,16 +20,6 @@
           #input
         />
       </mat-form-field>
-      <tui-input class="w-50 w-lg-25">
-        Filter
-        <input
-          tuiTextfield
-          type="text"
-          (keyup)="applyFilter($event)"
-          placeholder="Ex. John"
-          #input
-        />
-      </tui-input>
       <div>
         <button
           tuiButton

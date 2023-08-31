@@ -85,7 +85,7 @@ export class LoginComponent {
         if (data) {
           if (data.password === this.loginForm.value.password) {
             localStorage.setItem('token', 'klfajsdhfoisdfnsdfkjlks');
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.invalidPassword = true;
             this.load = false;

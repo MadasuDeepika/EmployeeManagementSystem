@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { LeaveListComponent } from './leave-list/leave-list.component';
 
 const routes: Routes = [
-  {path: '', component:LeaveRequestComponent}
+  {path: '', component:LeaveListComponent}
 ];
 
 @NgModule({

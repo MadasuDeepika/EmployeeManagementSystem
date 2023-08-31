@@ -18,6 +18,7 @@ export class FirebaseService {
     return this.http.post(this.dbLeavesUrl, leave);
   }
 
+
   addUser(user: User): Observable<any> {
     return this.http.put(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${user.id}.json`,
