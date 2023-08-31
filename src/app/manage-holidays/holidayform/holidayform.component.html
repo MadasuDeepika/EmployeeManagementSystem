@@ -1,0 +1,45 @@
+<tui-loader size="xl" [overlay]="true" [showLoader]="load">
+    <form class="container-lg" [formGroup]="holidayForm" (ngSubmit)="onSubmit()">
+      <div class="tui-form__header" *ngIf="!edit">Add Holiday Details</div>
+      <div class="tui-form__header" *ngIf="edit">Update Holiday Details</div>
+      <div class="tui-form__row_multi-fields tui-form__row">
+
+        <div class="tui-form__multi-field">
+          <tui-input formControlName="name" tuiHintContent="A tooltip">
+            Name
+            <input tuiTextfield placeholder="Enter full name" />
+            <span class="tui-required"></span>
+          </tui-input>
+        </div>
+      </div>
+      <div class="tui-form__row">
+        <tui-input-date formControlName="date" tuiHintContent="A tooltip">
+          Date
+          <input tuiTextfield placeholder="Enter position" />
+          <span class="tui-required"></span>
+        </tui-input-date>
+        <tui-error></tui-error>
+      </div>
+      <div tuiGroup class="group tui-form__row" [collapsed]="true">
+        <tui-radio-labeled
+          *ngFor="let type of types"
+          formControlName="type"
+          contentAlign="right"
+          size="l"
+          [item]="type"
+        >
+          {{ type }}
+        </tui-radio-labeled>
+      </div>
+      <div class="tui-form__buttons">
+        <button
+          tuiButton
+          type="button"
+          class="tui-form__button"
+          (click)="onSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+    </tui-loader>
