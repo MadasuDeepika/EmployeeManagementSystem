@@ -1,11 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.scss';
 
-.container-island {
+.body {
     // max-width: 62.5rem;
     // margin: 0 auto;
     .island-card{
         box-shadow: none !important;
-        margin: 0 .2rem;
+        margin: 0;
         height: auto;
     }
 }

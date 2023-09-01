@@ -84,8 +84,15 @@ export class LoginComponent {
       .subscribe((data) => {
         if (data) {
           if (data.password === this.loginForm.value.password) {
-            localStorage.setItem('token', 'klfajsdhfoisdfnsdfkjlks');
-            this.router.navigate(['/dashboard']);
+            if (data.role == 'admin'){
+              localStorage.setItem('token', JSON.stringify({user: data}));
+            this.router.navigate(['/dashboard/admin']);
+            }
+            else {
+              localStorage.setItem('token', JSON.stringify({user: data}));
+              this.router.navigate(['/dashboard/user'])
+            }
+            
           } else {
             this.invalidPassword = true;
             this.load = false;

@@ -1,18 +1,24 @@
-*{
-    border: red 1px solid ;
-}
+// *{
+//     border: red 1px solid ;
+// }
 .body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    .hero-text {
-        font-weight: 400;
-        font-size: 1.2rem;
-        line-height: 2rem;
-    }
-    img {
-        width: 70%;
+    height: 100vh;
+    background-color: var(--tui-primary);
+    color: white;
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .hero-text {
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+        img {
+            width: 70%;
+        }
     }
 }
+

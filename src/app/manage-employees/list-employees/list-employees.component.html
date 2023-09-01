@@ -1,6 +1,6 @@
-<div class="admin-body ">
+<div class="admin-body container">
   <!-- Navigation breadcrumbs -->
-  <tui-breadcrumbs size="l" class="py-4 container">
+  <tui-breadcrumbs size="l" class="py-4">
     <ng-container>
       <a *tuiItem tuiLink> Manage </a>
       <a *tuiItem tuiLink> Employees </a>
@@ -9,9 +9,10 @@
 
   <!-- View employee list -->
 
-  <div class="mt-lg-5 container">
+  <div class="mt-3 container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <mat-form-field class="form-field" appearance="outline">
+      <mat-form-field
+      class="form-field" appearance="outline">
         <mat-label>Filter</mat-label>
         <input
           matInput

@@ -32,10 +32,6 @@ export class FirebaseService {
     );
   }
 
-  getLeaves(): Observable<any> {
-    return this.http.get(this.dbLeavesUrl);
-  }
-
   getUsers(): Observable<any> {
     return this.http.get(this.dbUserUrl);
   }
@@ -71,5 +67,18 @@ export class FirebaseService {
 
   getHolidays() {
     return this.http.get(this.dbHolidayUrl);
+  }
+
+  // Leaves module
+
+  getLeaves(): Observable<any> {
+    return this.http.get(this.dbLeavesUrl);
+  }
+
+  acceptLeave(id:string):Observable<any>{
+    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`,{status:'approved'})
+  }
+  rejectLeave(id:string):Observable<any>{
+    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`,{status:'rejected'})
   }
 }

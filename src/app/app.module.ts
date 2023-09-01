@@ -12,7 +12,6 @@ import {
   TuiHostedDropdownModule,
   TuiLoaderModule,
   TuiLinkModule,
-  TUI_SANITIZER,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';

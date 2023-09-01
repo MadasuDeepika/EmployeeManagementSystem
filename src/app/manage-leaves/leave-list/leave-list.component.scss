@@ -1,6 +1,8 @@
 .leave-container {
   min-height: calc(100vh - 56px);
-
+  .muted {
+    color: gray;
+  }
   .leave-type {
     border: 1px solid rgba(black, 0.1);
     width: 25px;

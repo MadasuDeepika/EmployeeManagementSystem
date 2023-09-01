@@ -7,34 +7,69 @@
       </a>
     </ng-container>
   </tui-breadcrumbs>
+
+  <button tuiButton size="s" appearance="flat" icon="tuiIconRefreshCcw" (click)="getLeaves()">Refresh</button>
+
   <tui-loader [showLoader]="load" [overlay]="true" size="xl">
-    <div class="mt-lg-5 container d-flex flex-column flex-md-row gap-2">
-      <div class="card" *ngFor="let item of leaves">
-        <div class="card-header d-flex">
-          <tui-svg src="tuiIconUser"></tui-svg>{{ item.id | uppercase }}
-          <span class="ms-auto leave-type" [ngClass]="item.type">
-            {{ item.type }}</span
+    <div class="mt-3 d-flex flex-column flex-md-row gap-2">
+      <ng-container *ngFor="let item of arr">
+        <div class="card" *ngIf="item.status == 'pending'">
+          <div
+            class="card-header d-flex"
+            style="cursor: pointer"
+            (click)="showDialog(info, item.id)"
           >
-        </div>
-        <div class="card-body">
-          <div>
-            <span class="text-muted">Reason:</span>
-            <span style="text-decoration: underline">{{ item.reason }} </span
-            ><br />
-            <span class="text-muted">Date(s): </span
-            >{{ item.from | date : "dd-MMM" }}
-            <span class="text-muted"> - </span> {{ item.to | date : "dd-MMM" }}
+            <tui-svg src="tuiIconUser"></tui-svg
+            ><span style="text-decoration: underline">{{
+              item.id | uppercase
+            }}</span>
+            <span class="ms-auto leave-type" [ngClass]="item.type">
+              {{ item.type }}</span
+            >
+          </div>
+
+          <ng-template let-oberver #info>
+            <div class="h4">User Details</div>
+            <div class="display-7 d-flex flex-column gap-1">
+              <p><tui-svg src="tuiIconUserLarge"></tui-svg>  {{ name }}</p>
+              <p><tui-svg src="tuiIconMailLarge"></tui-svg>  {{ email }}</p>
+              <p>
+                <tui-svg src="tuiIconBriefcaseLarge"></tui-svg>  {{ position | uppercase}}
+              </p>
+            </div>
+          </ng-template>
+
+          <div class="card-body">
+            <div>
+              <span class="muted">Reason:</span>
+              <span style="text-transform: uppercase">{{ item.reason }} </span
+              ><br />
+              <span>
+                <span class="muted">Date(s):</span>
+                {{ item.from | date : "dd-MMM" }}
+                <span class="muted"> to </span>
+                {{ item.to | date : "dd-MMM" }}</span
+              >
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              mat-stroked-button
+              class="text-danger"
+              (click)="reject(item.key)"
+            >
+              Reject<tui-svg src="tuiIconClose" class="ms-1"></tui-svg>
+            </button>
+            <button
+              mat-stroked-button
+              class="ms-2 text-success"
+              (click)="accept(item.key)"
+            >
+              Accept<tui-svg src="tuiIconCheck" class="ms-1"></tui-svg>
+            </button>
           </div>
         </div>
-        <div class="card-footer">
-          <button mat-stroked-button class="text-danger">
-            Reject<tui-svg src="tuiIconClose" class="ms-1"></tui-svg>
-          </button>
-          <button mat-stroked-button class="ms-2 text-success">
-            Accept<tui-svg src="tuiIconCheck" class="ms-1"></tui-svg>
-          </button>
-        </div>
-      </div>
+      </ng-container>
     </div>
   </tui-loader>
 </div>
