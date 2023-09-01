@@ -1,43 +1,87 @@
+// * {
+//   border: red 1px solid;
+// }
+
 .body {
-  section {
-    background-color: var(--tui-primary);
-    color: white;
-    height: 100%;
-    img {
-      width: 80%;
-    }
-  }
-  .login-container{
-    flex: 1 1 auto;
+  display: flex;
+  height: calc(100vh);
+  .hero-section {
+    width: 50%;
     display: flex;
+    flex-direction:column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    background-color: var(--tui-primary);
+    color: white;
+
+    p {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      font-weight: 100;
+    }
+  }
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
     .login-form {
+      margin: 0 auto;
       width: 340px;
       padding: 4rem 1rem;
       border-radius: 10px;
-      // box-shadow: rgba(black,.1) 0px 20px 30px;
+      transition: all .5s ease;
+      &:hover {
+      box-shadow: rgba(black,.1) 0px 20px 30px;
+      }
     }
-  }
-  .hero-text {
-    font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 2rem;
   }
   button {
     margin: 0 auto;
   }
 }
 
-@media  (max-width: 992px) {
-
-  :host {
+@media (max-width: 992px) {
+  .body {
     flex-direction: column-reverse;
     .hero-section {
-      height: 40vh;
       width: 100%;
-    } 
-    
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: var(--tui-primary);
+      color: white;
+  
+      p {
+        text-align: center;
+        width: 70%;
+        margin: 1rem 0;
+        font-size: .8rem;
+        font-weight: 100;
+      }
+    }
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      .login-form {
+        margin: 0 auto;
+        width: 340px;
+        padding: 3rem 1rem;
+        border-radius: 10px;
+        transition: all .5s ease;
+        &:hover {
+        box-shadow: rgba(black,.1) 0px 20px 30px;
+        }
+      }
+    }
+    button {
+      margin: 0 auto;
+    }
   }
-
 }

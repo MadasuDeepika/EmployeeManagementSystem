@@ -1,22 +1,17 @@
-<div class="d-flex flex-column-reverse flex-lg-row body w-100 h-100 align-items-center">
-  <section
-    class="d-flex h-100 w-100 flex-column justify-content-center align-items-center hero-section"
-  >
+<div class="body">
+  <section class="hero-section">
     <img
-      class="img-fluid"
-      src="https://educloud.app/lms/src/erp/ec-lms.png"
+      src="https://technorishi.co.in/public/Asset/img/carousal/Leave%20Management.svg"
       alt="abstract image of a team working"
     />
-    <div class="hero-text my-3 w-75">
+    <p>
       Leave Management Made Simple: Focus on Work, We Handle the Rest
-    </div>
+    </p>
   </section>
-
-  <form
-    class="b-form w-50 mx-auto"
-    [formGroup]="loginForm"
-  >
-    <tui-loader size="xl" [showLoader]="load" [overlay]="true">
+  <section class="login-container">
+    <div class="h1 text-primary mt-4"><span class="text-success">Leave </span> Management System</div>
+    <form class="login-form" [formGroup]="loginForm">
+      <tui-loader size="xl" [showLoader]="load" [overlay]="true">
         <h1 class="text-center tui-form__header">Login Form</h1>
         <div>
           <p class="wrapper wrapper_dark">
@@ -61,6 +56,7 @@
             <tui-svg src="tuiIconLogIn"></tui-svg>
           </button>
         </div>
-    </tui-loader>
-  </form>
+      </tui-loader>
+    </form>
+  </section>
 </div>
