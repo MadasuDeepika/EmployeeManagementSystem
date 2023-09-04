@@ -2,21 +2,22 @@
   height: 100%;
 }
 
-.link-active {
-  background-color: rgba(gray,.5);
-  color: white !important;
+.appbar {
+  background-color: var(--tui-primary-active);
+  color: white;
+}
+
+.is-active {
+  background-color: rgba(rgb(83, 74, 74),.5);
+
 }
 
 .sidenav {
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+// .mat-toolbar.mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }

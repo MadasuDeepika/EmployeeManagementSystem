@@ -19,7 +19,7 @@ export class AppComponent {
   ];
   elem: any;
   constructor(private auth: AuthService, private router: Router) {
-    if (this.auth.isAuthentiated()) this.isLoggedIn = true;
+    if (this.auth.isAuthenticated()) this.isLoggedIn = true;
     this.isAuthenticated$ = this.auth.getAuthEmitter();
   }
   isLoggedIn = false;
@@ -35,7 +35,7 @@ export class AppComponent {
 
   logout() {
     localStorage.removeItem('token');
-    this.auth.isAuthentiated();
+    this.auth.isAuthenticated();
     this.router.navigate(['/login']);
   }
 }

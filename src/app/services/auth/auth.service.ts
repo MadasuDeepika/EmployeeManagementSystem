@@ -9,14 +9,28 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private db: FirebaseService, private router: Router) {}
-  authChange: EventEmitter<boolean> = new EventEmitter();
+  isClient: EventEmitter<boolean> = new EventEmitter();
 
   login(id: string, password: string): Observable<any> {
     return this.db.getUserById(id);
   }
 
-  isAuthentiated(): Observable<boolean> {
-    let tokenExist = localStorage.getItem('token');
+  getUser(){
+    let user = localStorage.getItem('token')!;
+    return JSON.parse(user).user; 
+  }
+
+  isAdmin(): Observable<boolean> {
+    let tokenExist = localStorage.getItem('token')!;
+    if (JSON.parse(tokenExist).user.role == 'admin') {
+      return of(true);
+    } else {
+      return of(false);
+    }
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    let tokenExist = localStorage.getItem('token')!;
     if (tokenExist) {
       return of(true);
     } else {
@@ -25,6 +39,6 @@ export class AuthService {
   }
 
   getAuthEmitter() {
-    return this.authChange;
+    return this.isClient;
   }
 }

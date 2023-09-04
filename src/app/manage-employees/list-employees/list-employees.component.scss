@@ -2,15 +2,32 @@
 
 .admin-body {
   min-height: calc(100vh - 56px);
-  background-color: var(--tui-base-01);
   border-radius: 10px;
-  color: var(--tui-text-08);
+  .contain {
+    border: 1px solid rgba(black, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    overflow-x: auto;
+  }
+  input {
+    border: 0;
+    border-bottom: 1px solid rgba(black, 0.1);
+    padding: .5rem;
+  }
 }
-.contain {
-  border: 1px solid rgba(black, 0.1);
-  border-radius: 10px;
-  // overflow-x: scroll;
+.rotate{
+  animation: rot 1s linear infinite;
 }
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 //   @media screen and (max-width: 960px) {
 //     mat-table {

@@ -32,8 +32,8 @@ export class ListHolidaysComponent {
 
   upcomingDate(dateString: string) {
     const currentYear = new Date().getFullYear();
-    const [day, month] = dateString.split('-');
-    const formattedDate = new Date(currentYear, parseInt(month) - 1, parseInt(day));
+    const [year,month, day] = dateString.split('-');
+    const formattedDate = new Date(currentYear, parseInt(month) - 1, parseInt(day));    
     return formattedDate  > new Date()
   }
 

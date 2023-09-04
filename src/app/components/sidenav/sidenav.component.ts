@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  name: string ='';
+  isClient:any;
   private breakpointObserver = inject(BreakpointObserver);
-  constructor(private auth: AuthService,private router: Router){}
+  constructor(private auth: AuthService,private router: Router){
+    this.name = this.auth.getUser().name
+    this.isClient = this.auth.getAuthEmitter().subscribe()
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,7 +27,7 @@ export class SidenavComponent {
 
     logout() {
       localStorage.removeItem('token');
-      this.auth.isAuthentiated();
+      this.auth.isAuthenticated();
       this.router.navigate(['/login']);
     }
 }

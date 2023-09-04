@@ -1,13 +1,43 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TuiInputDateModule, TuiInputModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
+import {
+  TuiButtonModule,
+  TuiErrorModule,
+  TuiGroupModule,
+  TuiLoaderModule,
+} from '@taiga-ui/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @Component({
   selector: 'app-holidayform',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiInputModule,
+    TuiRadioLabeledModule,
+    TuiErrorModule,
+    TuiButtonModule,
+    TuiGroupModule,
+    TuiLoaderModule,
+    TuiInputDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   templateUrl: './holidayform.component.html',
-  styleUrls: ['./holidayform.component.scss']
+  styleUrls: ['./holidayform.component.scss'],
 })
-export class HolidayformComponent {
+export class HolidayformComponent implements OnChanges{
   @Input() Name:any;
   @Input() type:any;
   @Input() date:any;
@@ -15,9 +45,7 @@ export class HolidayformComponent {
   holidayForm:any;
   constructor(private fb: FormBuilder,private db:FirebaseService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {   
-    console.log(this.index);
-     
+  ngOnChanges(changes: SimpleChanges): void {        
     this.holidayForm = this.fb.group({
       name: [this.Name],
       type: [this.type],

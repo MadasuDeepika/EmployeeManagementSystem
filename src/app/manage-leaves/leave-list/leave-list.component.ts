@@ -1,48 +1,61 @@
 import { Component } from '@angular/core';
 import { TuiDialogService } from '@taiga-ui/core';
+import { each } from 'jquery';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-leave-list',
   templateUrl: './leave-list.component.html',
-  styleUrls: ['./leave-list.component.scss']
+  styleUrls: ['./leave-list.component.scss'],
 })
 export class LeaveListComponent {
-  load = false
-  leave:any;
-  arr:any;
-  name:any;
-  email:any;
-  position:any;
-  constructor(private fb: FirebaseService,private readonly dialogs: TuiDialogService){
-    this.getLeaves()
+  load = false;
+  leave: any;
+  arr: any;
+  name: any;
+  email: any;
+  position: any;
+  constructor(
+    private fb: FirebaseService,
+    private readonly dialogs: TuiDialogService
+  ) {
+    this.getLeaves();
   }
-  leaves:any;
+  leaves: object[] =[];
+
+
   getLeaves() {
-    this.load = true
-    this.fb.getLeaves().subscribe(leaves=> {this.arr=Object.keys(leaves).map(key=>({
-      key:key,
-      ...leaves[key]
-    }));this.leaves = Object.values(leaves);this.load = false});
+    this.leaves = []
+    this.load = true;
+    this.fb.getLeaves().subscribe((leaves) => {
+      Object.values(leaves).map((eachUser:any) => {    
+        Object.values(eachUser).map((eachLeave:any)=>{
+          if(eachLeave.status == 'pending'){
+            this.leaves.push(eachLeave);                      
+          }
+        })
+      })      
+      this.arr = this.leaves
+      this.load = false;
+    });
   }
 
-  showDialog(content: any,id:string): void {
-    this.fb.getUserById(id).subscribe(data=>{
+  showDialog(content: any, id: string): void {
+    this.fb.getUserById(id).subscribe((data) => {
       this.name = data.name;
       this.email = data.email;
       this.position = data.position;
       this.dialogs.open(content).subscribe();
-    })
+    });
   }
 
-  accept(id:any) {
+  accept(id: any) {
     this.load = true;
-    this.fb.acceptLeave(id).subscribe(res=>this.getLeaves())
+    this.fb.acceptLeave(id).subscribe((res) => this.getLeaves());
   }
 
-  reject(id:any) {
+  reject(id: any) {
     this.load = true;
-    this.fb.rejectLeave(id).subscribe(res=>this.getLeaves())
+    this.fb.rejectLeave(id).subscribe((res) => this.getLeaves());
   }
-  
 }

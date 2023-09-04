@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ClientModule } from './client/client.module';
+import { isAdminGuard } from './guards/is-admin.guard';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: ''},
@@ -21,22 +23,25 @@ const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo:'admin'},
     {
       path: 'admin',
-      canActivate: [isAuthenticatedGuard],
+      canActivate: [isAuthenticatedGuard,isAdminGuard],
       loadChildren: () =>
         import('./manage-employees/manage-employees.module').then(
           e => e.ManageEmployeesModule
         ),
     },
+    {path: 'user', canActivate:[isAuthenticatedGuard], loadChildren: () =>import('./client/client.module').then(
+      e=> e.ClientModule
+    ) },
     {
       path: 'holidays',
-      canActivate: [isAuthenticatedGuard],
+      canActivate: [isAuthenticatedGuard,isAdminGuard],
       loadChildren: () =>import('./manage-holidays/manage-holidays.module').then(
         e=> e.ManageHolidaysModule
       )
     },
     {
       path: 'leaves',
-      canActivate: [isAuthenticatedGuard],
+      canActivate: [isAuthenticatedGuard,isAdminGuard],
       loadChildren: () =>import('./manage-leaves/manage-leaves.module').then(
         e=> e.ManageLeavesModule
       )

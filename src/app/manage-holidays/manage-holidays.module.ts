@@ -20,11 +20,11 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { HolidayformComponent } from './holidayform/holidayform.component';
 import { ListHolidaysComponent } from './list-holidays/list-holidays.component';
+import { HolidayformComponent } from './holidayform/holidayform.component';
 
 @NgModule({
-  declarations: [ListHolidaysComponent, HolidayformComponent],
+  declarations: [ListHolidaysComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -35,13 +35,11 @@ import { ListHolidaysComponent } from './list-holidays/list-holidays.component';
     TuiSvgModule,
     TuiLoaderModule,
     TuiDataListModule,
-    TuiInputModule,
     MatFormFieldModule,
     MatInputModule,
     TuiButtonModule,
     TuiGroupModule,
-    TuiErrorModule,
-    TuiRadioLabeledModule,
+    HolidayformComponent
   ],
 })
 export class ManageHolidaysModule {}

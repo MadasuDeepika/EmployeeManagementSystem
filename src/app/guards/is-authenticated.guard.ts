@@ -9,7 +9,7 @@ export const isAuthenticatedGuard = (route:ActivatedRouteSnapshot, state: Router
   let role = JSON.parse(token!).user.role;
 
   const router= inject(Router)
-  return inject(AuthService).isAuthentiated()
+  return inject(AuthService).isAuthenticated()
   .pipe(
     map((isLoggedIn) => {
       isLoggedIn? true: router.navigate(['login'])
