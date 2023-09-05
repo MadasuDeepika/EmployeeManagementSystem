@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   name: string ='';
-  isClient:any;
+  isAdmin:any;
   private breakpointObserver = inject(BreakpointObserver);
   constructor(private auth: AuthService,private router: Router){
     this.name = this.auth.getUser().name
-    this.isClient = this.auth.getAuthEmitter().subscribe()
+    this.auth.isAdmin().subscribe(res => this.isAdmin = res);     
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

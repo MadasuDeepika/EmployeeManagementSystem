@@ -20,7 +20,6 @@ export class AppComponent {
   elem: any;
   constructor(private auth: AuthService, private router: Router) {
     if (this.auth.isAuthenticated()) this.isLoggedIn = true;
-    this.isAuthenticated$ = this.auth.getAuthEmitter();
   }
   isLoggedIn = false;
 

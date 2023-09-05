@@ -1,0 +1,58 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.type | uppercase }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="reason">
+    <th mat-header-cell *matHeaderCellDef>Reason</th>
+    <td mat-cell *matCellDef="let element">{{ element.reason }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="from">
+    <th mat-header-cell *matHeaderCellDef>From</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.from | date : "dd-MMMM-yyyy" }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="to">
+    <th mat-header-cell *matHeaderCellDef>To</th>
+    <td mat-cell *matCellDef="let element">{{ element.to }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label=" icon button with a delete icon"
+        (click)="showDialog(delete)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <ng-template let-observer #delete>
+        <div class="mb-2 h3">Confirm Delete</div>
+        Are you sure you want to remove this leave request?
+        <div class="my-3 ms-auto">
+          <button mat-flat-button (click)="observer.complete()">Cancel</button>
+          <button mat-raised-button color="warn" (click)="onDelete(element.key)">
+            Delete
+          </button>
+        </div>
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

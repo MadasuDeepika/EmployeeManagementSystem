@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private db: FirebaseService, private router: Router) {}
-  isClient: EventEmitter<boolean> = new EventEmitter();
 
   login(id: string, password: string): Observable<any> {
     return this.db.getUserById(id);
@@ -38,7 +37,4 @@ export class AuthService {
     }
   }
 
-  getAuthEmitter() {
-    return this.isClient;
-  }
 }

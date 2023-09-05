@@ -3,9 +3,9 @@
   <button tuiButton size="s" appearance="flat" icon="tuiIconRefreshCcw" (click)="getLeaves()">Refresh</button>
 
   <tui-loader [showLoader]="load" [overlay]="true" size="xl">
-    <div class="py-3 d-flex flex-column flex-md-row gap-2">
+    <div class="py-3 row  gap-2">
       <ng-container *ngFor="let item of arr">
-        <div class="card" *ngIf="item.status == 'pending'">
+        <div class="card col-md-4 col-lg-3" *ngIf="item.status == 'pending'">
           <div
             class="card-header d-flex"
             style="cursor: pointer"

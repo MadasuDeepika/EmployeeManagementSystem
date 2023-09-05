@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../models/user.interface';
+import { User } from '../../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -14,9 +14,7 @@ export class FirebaseService {
   dbLeavesUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/.json';
 
-  requestLeave(leave: any) {
-    return this.http.post(this.dbLeavesUrl, leave);
-  }
+
 
   addUser(user: User): Observable<any> {
     return this.http.put(
@@ -73,6 +71,16 @@ export class FirebaseService {
 
   getLeaves(): Observable<any> {
     return this.http.get(this.dbLeavesUrl);
+  }
+
+  getLeavesById(id: string): Observable<any> {
+    return this.http.get(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`)
+  }
+
+  requestLeave(leave: any): Observable<any> {
+    return this.http.post(  
+        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${leave.id}.json`
+    ,{status:"pending",...leave});
   }
 
   acceptLeave(id:string):Observable<any>{
