@@ -1,25 +1,27 @@
-<div class="container leave-container py-3">
+<div class="container leave-container pt-2 pt-lg-5">
 
-  <button tuiButton size="s" appearance="flat" icon="tuiIconRefreshCcw" (click)="getLeaves()">Refresh</button>
+
+  <button tuiButton size="s" appearance="flat" icon="tuiIconRefreshCcw" (click)="getLeaves()" class="mb-3">Refresh</button>
 
   <tui-loader [showLoader]="load" [overlay]="true" size="xl">
-    <div class="py-3 row  gap-2">
+    <div class=" row  gap-2 container">
       <ng-container *ngFor="let item of arr">
-        <div class="card col-md-4 col-lg-3" *ngIf="item.status == 'pending'">
+        <div class="card col-md-4 col-lg-3" *ngIf="item.val.status == 'pending'">
           <div
             class="card-header d-flex"
             style="cursor: pointer"
-            (click)="showDialog(info, item.id)"
+            (click)="showDialog(info, item.val.id)"
           >
             <tui-svg src="tuiIconUser"></tui-svg
             ><span style="text-decoration: underline">{{
-              item.id | uppercase
+              item.val.id | uppercase
             }}</span>
-            <span class="ms-auto leave-type" [ngClass]="item.type">
-              {{ item.type }}</span
+            <span class="ms-auto leave-type" [ngClass]="item.val.type">
+              {{ item.val.type }}</span
             >
           </div>
 
+          <!-- More info on user -->
           <ng-template let-oberver #info>
             <div class="h4">User Details</div>
             <div class="display-7 d-flex flex-column gap-1">
@@ -34,28 +36,30 @@
           <div class="card-body">
             <div>
               <span class="muted">Reason:</span>
-              <span style="text-transform: uppercase">{{ item.reason }} </span
+              <span style="text-transform: uppercase">{{ item.val.reason }} </span
               ><br />
               <span>
                 <span class="muted">Date(s):</span>
-                {{ item.from | date : "dd-MMM" }}
-                <span class="muted" *ngIf="item.to"> to </span>
-                {{ item.to | date : "dd-MMM" }}</span
+                {{ item.val.from | date : "dd-MMM" }}
+                <span class="muted" *ngIf="item.val.to"> to </span>
+                {{ item.val.to | date : "dd-MMM" }}</span
               >
             </div>
           </div>
+
+          <!-- Card footer -->
           <div class="card-footer">
             <button
               mat-stroked-button
               class="text-danger"
-              (click)="reject(item.key)"
+              (click)="reject(item.key,item.val.id)"
             >
               Reject<tui-svg src="tuiIconClose" class="ms-1"></tui-svg>
             </button>
             <button
               mat-stroked-button
               class="ms-2 text-success"
-              (click)="accept(item.key)"
+              (click)="accept(item.key,item.val.id)"
             >
               Accept<tui-svg src="tuiIconCheck" class="ms-1"></tui-svg>
             </button>

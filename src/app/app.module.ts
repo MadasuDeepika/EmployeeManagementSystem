@@ -71,15 +71,6 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatListModule,
   ],
-  providers: [
-    {
-      provide: TUI_BUTTON_OPTIONS,
-      useValue: {
-        appearance: 'primary',
-        size: 'm',
-      },
-    },
-  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

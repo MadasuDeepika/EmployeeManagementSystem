@@ -35,9 +35,17 @@
     <div class="tui-form__buttons">
       <button
         tuiButton
+        appearance="secondary-destructive"
+        (click)="onDelete()"
+      >
+        Delete Holiday
+      </button>
+      <button
+        tuiButton
         type="button"
         class="tui-form__button"
         (click)="onSubmit()"
+        [disabled]="holidayForm.pristine"
       >
         Submit
       </button>

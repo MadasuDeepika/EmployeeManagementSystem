@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "source-map-explorer":"source-map-explorer dist/lms/**/*.js"
   },
   "private": true,
   "dependencies": {

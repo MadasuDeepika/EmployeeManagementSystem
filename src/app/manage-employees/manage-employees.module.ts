@@ -36,7 +36,7 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
     TuiDialogModule,
     TuiLoaderModule,
     UserformComponent,
-    TuiInputModule
+    TuiInputModule,
   ],
 })
 export class ManageEmployeesModule {}

@@ -31,7 +31,7 @@ export class UserformComponent {
   @Output() done: EventEmitter<any> = new EventEmitter();
   constructor(private fb:FormBuilder,private db:FirebaseService){
   }
-  readonly roles = ['admin', 'employee'];
+  readonly roles = ['Admin', 'Employee'];
   userForm:any;
 
   ngOnChanges(changes: SimpleChanges){
@@ -42,7 +42,7 @@ export class UserformComponent {
         email: [this.email],
         password: [''],
         position: [this.position],
-        role: ['employee']
+        role: ['Employee']
       });
     }else{
       this.userForm = this.fb.group({
@@ -51,7 +51,7 @@ export class UserformComponent {
         email: ['',[Validators.required,Validators.email]],
         password: ['',[Validators.required]],
         position: ['',[Validators.required]],
-        role: ['employee']
+        role: ['Employee']
       });
     }
   }
@@ -71,7 +71,7 @@ export class UserformComponent {
       });
     }else {
       this.db.addUser({
-        id: this.userForm.value.id!,
+        id: this.userForm.value.id!.toLowerCase(),
         name:this.userForm.value.name!,
         email:this.userForm.value.email!,
         password: this.userForm.value.password!,

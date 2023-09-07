@@ -1,7 +1,8 @@
 <div class="admin-body container">
   <!-- View employee list -->
 
-  <div class="py-3">
+  <div class="pt-1 pt-lg-5">
+
     <div class="d-flex justify-content-between align-items-center mb-3">
       <input
         matInput
@@ -9,16 +10,16 @@
         placeholder="Filter"
         #input
       />
-      <div>
+      <div class="d-flex align-items-center gap-1">
         <tui-svg
-          src="tuiIconRefreshCw"
+          src="tuiIconRefreshCwLarge"
           type="button"
           class="me-2"
           [ngClass]="load ? 'rotate' : ''"
           size="s"
           (click)="loadUsers()"
         ></tui-svg>
-        <button tuiButton appearance="flat" size="s" (click)="showDialog(form)">
+        <button tuiButton  size="m" (click)="showDialog(form)" class="d-none d-md-block">
           Add <tui-svg src="tuiIconUserPlus"></tui-svg>
 
           <!-- add user form -->
@@ -32,6 +33,7 @@
         </button>
       </div>
     </div>
+
     <tui-loader size="xl" [showLoader]="load" [overlay]="true">
       <div class="contain">
         <mat-table
@@ -96,12 +98,14 @@
                   <button
                     tuiButton
                     icon="tuiIconEditLarge"
+                    size="m"
                     (click)="observer.complete(); showDialog(editform)"
                   >
                     Edit
                   </button>
                   <button
                     tuiButton
+                    size="m"
                     appearance="secondary-destructive"
                     icon="tuiIconTrash2Large"
                     (click)="observer.complete(); showDialog(template)"
@@ -190,7 +194,20 @@
           [pageSizeOptions]="[5, 10]"
           aria-label="Select page of users"
         ></mat-paginator>
+
       </div>
     </tui-loader>
+    <button tuiButton appearance="secondary"  size="l" (click)="showDialog(form)" class="add-mobile d-block d-md-none">
+      Add <tui-svg src="tuiIconUserPlus"></tui-svg>
+
+      <!-- add user form -->
+      <ng-template let-observer #form>
+        <app-userform
+          [observer]="observer"
+          (done)="addAlert()"
+          [edit]="false"
+        ></app-userform>
+      </ng-template>
+    </button>
   </div>
 </div>

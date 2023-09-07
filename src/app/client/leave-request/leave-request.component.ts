@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-leave-request',
@@ -10,14 +11,19 @@ export class LeaveRequestComponent {
   cl:any;
   sl:any;
   id:any;
-constructor(private auth: AuthService){
-  this.cl = this.auth.getUser().leaves.cl;
-  this.sl = this.auth.getUser().leaves.sl;
+constructor(private auth: AuthService,private db: FirebaseService){
   this.id = this.auth.getUser().id;
+  this.db.getUserById(this.id).subscribe(user=>this.cl = user.leaves.cl);
+  this.db.getUserById(this.id).subscribe(user=>this.sl = user.leaves.sl);
+
 }
 update(type:any){
   if (type == 'cl')
-  this.cl = this.cl - 1
-else this.sl = this.sl -1 
+  {this.cl = this.cl - 1;
+  this.db.updateCL(this.id,this.cl).subscribe(res=>console.log(res));
+  }
+else {this.sl = this.sl -1 ;
+  this.db.updateSL(this.id,this.cl).subscribe(res=>console.log(res));
+}
 }
 }

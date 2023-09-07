@@ -4,15 +4,26 @@
   min-height: calc(100vh - 56px);
   border-radius: 10px;
   .contain {
-    border: 1px solid rgba(black, 0.1);
+    border: 1px solid rgba(black, 0.05);
+    box-shadow: #121212 1px 1px 10px -7px;
     border-radius: 10px;
     width: 100%;
     overflow-x: auto;
   }
+  .add-mobile {
+    box-shadow: #121212 1px 1px 10px -7px;
+    position: fixed;
+    bottom: 5vh;
+    right: 1rem;
+  }
   input {
     border: 0;
     border-bottom: 1px solid rgba(black, 0.1);
-    padding: .5rem;
+    font-size: 1rem;
+    &:hover {
+      border-bottom: 1px solid rgba(black, 0.5);
+    }
+    padding:1rem .5rem;
   }
 }
 .rotate{

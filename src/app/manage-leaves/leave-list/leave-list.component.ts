@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 export class LeaveListComponent {
   load = false;
   leave: any;
-  arr: any;
+  arr: any[] = [];;
   name: any;
   email: any;
   position: any;
@@ -21,21 +21,20 @@ export class LeaveListComponent {
   ) {
     this.getLeaves();
   }
-  leaves: object[] =[];
-
+  leaves: object[] = [];
 
   getLeaves() {
-    this.leaves = []
+    this.arr = [];
     this.load = true;
     this.fb.getLeaves().subscribe((leaves) => {
-      Object.values(leaves).map((eachUser:any) => {    
-        Object.values(eachUser).map((eachLeave:any)=>{
-          if(eachLeave.status == 'pending'){
-            this.leaves.push(eachLeave);                      
-          }
-        })
-      })      
-      this.arr = this.leaves
+      Object.values(leaves).map((eachUser: any) => {
+        Object.entries(eachUser).forEach(([uid, val]) => {
+          this.arr.push({
+            key:uid,
+            val
+          });
+        });
+      });
       this.load = false;
     });
   }
@@ -49,13 +48,13 @@ export class LeaveListComponent {
     });
   }
 
-  accept(id: any) {
+  accept(key:any,id: any) {
     this.load = true;
-    this.fb.acceptLeave(id).subscribe((res) => this.getLeaves());
+    this.fb.acceptLeave(key,id).subscribe((res) => this.getLeaves());
   }
 
-  reject(id: any) {
+  reject(key:any,id: any) {
     this.load = true;
-    this.fb.rejectLeave(id).subscribe((res) => this.getLeaves());
+    this.fb.rejectLeave(key,id).subscribe((res) => this.getLeaves());
   }
 }
