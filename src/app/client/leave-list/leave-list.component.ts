@@ -4,9 +4,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  ViewChild,
 } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TuiDialogService } from '@taiga-ui/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
@@ -22,7 +20,6 @@ export class LeaveListComponent implements OnChanges {
   arr!: any[];
   dataSource!: MatTableDataSource<any>;
   displayedColumns!: string[];
-  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private db: FirebaseService,
@@ -47,7 +44,6 @@ export class LeaveListComponent implements OnChanges {
         this.dataSource = new MatTableDataSource(
           this.arr.filter((leave) => leave !== null)
         );
-        this.dataSource.sort = this.sort;
       });
     } else {
       this.displayedColumns = ['type', 'reason', 'from', 'to', 'status'];

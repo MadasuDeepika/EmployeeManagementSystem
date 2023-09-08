@@ -5,14 +5,14 @@
         <div class="d-flex gap-2">
           Granted :
           <div class="cl"></div>
-          {{cl}} casual leaves(CL)
+          {{cl}} casual leaves
 
           <div class="sl"></div>
-          {{sl}} sick leaves(SL)
+          {{sl}} sick leaves
         </div>
       </div>
 
-      <app-leave-form [sl]="sl" [cl]="cl" (update)="update($event)" [(load)]="load"></app-leave-form>
+      <app-leave-form (update)="update($event)"></app-leave-form>
     </mat-tab>
     <mat-tab label="Pending"> <app-leave-list [ID]="id"  [type]="'pending'"></app-leave-list> </mat-tab>
     <mat-tab label="Completed">

@@ -1,0 +1,24 @@
+// * {
+//     border: red 1px solid;
+// }
+.body {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  .content {
+    flex: 1 1 auto;
+  }
+  .appbar {
+    background-color:#222;
+    color: #fff;
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 1.3rem 0;
+    }
+  }
+  .active-link {
+    outline: 1px solid rgba(white, 1);
+    color: white;
+  }
+}

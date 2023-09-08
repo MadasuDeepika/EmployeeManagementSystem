@@ -75,7 +75,7 @@ export class HolidayformComponent implements OnChanges {
     }
 
   }
-  readonly types = ['National Holiday', 'Religious Holiday','Other'];
+  readonly types = ['National Holiday', 'Religious Holiday'];
 
   onSubmit() {
     this.load = true;       
