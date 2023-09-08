@@ -1,12 +1,12 @@
 <div class="container leave-container pt-2 pt-lg-5">
 
 
-  <button tuiButton size="s" appearance="flat" icon="tuiIconRefreshCcw" (click)="getLeaves()" class="mb-3">Refresh</button>
+  <button tuiButton size="m" appearance="secondary" iconRight="tuiIconRefreshCcw" (click)="getLeaves()" class="mb-3">Refresh</button>
 
   <tui-loader [showLoader]="load" [overlay]="true" size="xl">
     <div class=" row  gap-2 container">
       <ng-container *ngFor="let item of arr">
-        <div class="card col-md-4 col-lg-3" *ngIf="item.val.status == 'pending'">
+        <div class="card  col-md-4 col-lg-3 " *ngIf="item.val.status == 'pending'">
           <div
             class="card-header d-flex"
             style="cursor: pointer"

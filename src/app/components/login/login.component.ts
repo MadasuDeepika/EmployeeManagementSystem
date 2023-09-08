@@ -7,17 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TuiAppBarModule, TuiSidebarModule } from '@taiga-ui/addon-mobile';
-import { TuiActiveZoneModule, TuiItemModule } from '@taiga-ui/cdk';
 import {
-  TuiAlertModule,
   TuiButtonModule,
-  TuiDataListModule,
   TuiDialogModule,
   TuiDialogService,
-  TuiDropdownModule,
-  TuiHostedDropdownModule,
-  TuiLinkModule,
   TuiLoaderModule,
   TuiNotificationModule,
   TuiRootModule,
@@ -25,7 +18,6 @@ import {
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-  TuiAccordionModule,
   TuiInputModule,
   TuiInputPasswordModule,
 } from '@taiga-ui/kit';
@@ -39,23 +31,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     ReactiveFormsModule,
     TuiRootModule,
     TuiSvgModule,
-    TuiDataListModule,
-    TuiHostedDropdownModule,
-    TuiDropdownModule,
-    TuiLinkModule,
     TuiButtonModule,
-    TuiItemModule,
-    TuiAppBarModule,
-    TuiAlertModule,
     TuiDialogModule,
     TuiNotificationModule,
     TuiInputModule,
     TuiInputPasswordModule,
     TuiTextfieldControllerModule,
     TuiLoaderModule,
-    TuiAccordionModule,
-    TuiSidebarModule,
-    TuiActiveZoneModule,
+
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

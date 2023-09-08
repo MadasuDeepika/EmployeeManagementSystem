@@ -11,19 +11,22 @@ export class LeaveRequestComponent {
   cl:any;
   sl:any;
   id:any;
+  load = false;
 constructor(private auth: AuthService,private db: FirebaseService){
   this.id = this.auth.getUser().id;
-  this.db.getUserById(this.id).subscribe(user=>this.cl = user.leaves.cl);
-  this.db.getUserById(this.id).subscribe(user=>this.sl = user.leaves.sl);
-
+  this.loadLeaves();
 }
-update(type:any){
-  if (type == 'cl')
-  {this.cl = this.cl - 1;
-  this.db.updateCL(this.id,this.cl).subscribe(res=>console.log(res));
+update(data:any){  
+  if (data.type == 'cl'){
+  this.db.updateCL(this.id,data.left).subscribe(res=>this.loadLeaves());
   }
-else {this.sl = this.sl -1 ;
-  this.db.updateSL(this.id,this.cl).subscribe(res=>console.log(res));
+else if(data.type == 'sl'){
+  this.db.updateSL(this.id,data.left).subscribe(res=>this.loadLeaves());
 }
+}
+
+loadLeaves(){
+  this.load = true;
+  this.db.getUserById(this.id).subscribe(user=>{this.cl = user.leaves.cl;this.sl = user.leaves.sl;this.load = false;});
 }
 }
