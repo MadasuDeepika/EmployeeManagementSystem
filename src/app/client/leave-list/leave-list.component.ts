@@ -1,10 +1,14 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Inject,
   Input,
   OnChanges,
+  OnInit,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TuiDialogService } from '@taiga-ui/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
@@ -13,56 +17,72 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   selector: 'app-leave-list',
   templateUrl: './leave-list.component.html',
   styleUrls: ['./leave-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LeaveListComponent implements OnChanges {
+export class LeaveListComponent implements OnChanges,OnInit {
   @Input() ID!: string;
   @Input() type!: any;
+  leaves:any;
   arr!: any[];
   dataSource!: MatTableDataSource<any>;
+  @ViewChild(MatSort) sort!: MatSort;
+
   displayedColumns!: string[];
 
   constructor(
     private db: FirebaseService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+  ) {
+    
+  }
+
+  ngOnInit(): void {
+    this.db.getLeavesById(this.ID);
+    this.db.userLeaves$.subscribe(data=>{this.leaves = data;
+    })
+  }
+
+  loadLeaves(type:string) {    
+    if(type == 'pending'){
+      this.db.userLeaves$.subscribe((data) => {
+        
+        this.arr = Object.keys(data).map((key) => {
+            return {
+              key: key,
+              ...data[key],
+            }
+        });
+        this.dataSource = new MatTableDataSource(
+          this.arr.filter((leave) => leave.status == 'pending')
+        );
+        this.dataSource.sort = this.sort;
+      });
+    }else {
+      this.db.userLeaves$.subscribe((data) => {
+
+        this.arr = Object.keys(data).map((key) => {
+            return {
+              key: key,
+              ...data[key],
+            }
+        });
+        this.dataSource = new MatTableDataSource(
+          this.arr.filter((leave) => leave.status != 'pending')
+        );
+        this.dataSource.sort = this.sort;
+
+      });
+    }
+  
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.type == 'pending') {
       this.displayedColumns = ['type', 'reason', 'from', 'to', 'action'];
-      const objectData: { [key: string]: string } = {};
-      this.db.getLeavesById(this.ID).subscribe((data) => {
-        this.arr = Object.keys(data).map((key) => {
-          if (data[key].status == 'pending') {
-            return {
-              key: key,
-              ...data[key],
-            };
-          } else {
-            return null;
-          }
-        });
-        this.dataSource = new MatTableDataSource(
-          this.arr.filter((leave) => leave !== null)
-        );
-      });
+      this.loadLeaves(this.type);
     } else {
       this.displayedColumns = ['type', 'reason', 'from', 'to', 'status'];
-      const objectData: { [key: string]: string } = {};
-      this.db.getLeavesById(this.ID).subscribe((data) => {
-        this.arr = Object.keys(data).map((key) => {
-          if (data[key].status != 'pending') {
-            return {
-              key: key,
-              ...data[key],
-            };
-          } else {
-            return null;
-          }
-        });
-        this.dataSource = new MatTableDataSource(
-          this.arr.filter((leave) => leave !== null)
-        );
-      });
+      this.loadLeaves('')
     }
   }
 
@@ -71,6 +91,7 @@ export class LeaveListComponent implements OnChanges {
   }
 
   onDelete(key: any) {
-    console.log('deleted ', key);
+    this.db.deleteLeave(this.ID,key).subscribe(res=>{this.loadLeaves(this.type)}
+    )
   }
 }

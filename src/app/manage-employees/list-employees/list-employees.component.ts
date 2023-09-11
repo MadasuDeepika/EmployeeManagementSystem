@@ -63,8 +63,13 @@ export class ListEmployeesComponent {
       .subscribe();
     this.loadUsers();
   }
-  addAlert() {
-    this.alerts.open(`Added new user`, { label: 'Success' }).subscribe();
+  addAlert(type:string) {
+    if (type == 'add'){
+      this.alerts.open(`Added new user`, { label: 'Success' }).subscribe();
+    }else {
+      this.alerts.open(`Updated user`, { label: 'Success' }).subscribe();
+
+    }
     this.loadUsers();
   }
 }

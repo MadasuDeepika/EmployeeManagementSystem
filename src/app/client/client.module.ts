@@ -13,9 +13,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { TuiLoaderModule, TuiSvgModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiLoaderModule, TuiNotificationModule, TuiSvgModule } from '@taiga-ui/core';
 import { LeaveListComponent } from './leave-list/leave-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     TuiLoaderModule,
     TuiSvgModule,
-    MatTableModule
+    MatTableModule,
+    TuiButtonModule,
+    TuiNotificationModule,
+    MatSortModule
   ]
 })
 export class ClientModule { }

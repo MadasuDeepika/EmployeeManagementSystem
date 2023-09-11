@@ -26,7 +26,7 @@
           <ng-template let-observer #form>
             <app-userform
               [observer]="observer"
-              (done)="addAlert()"
+              (done)="addAlert($event)"
               [edit]="false"
             ></app-userform>
           </ng-template>
@@ -129,7 +129,7 @@
                   <ng-template let-observer #editform>
                     <app-userform
                       [observer]="observer"
-                      (done)="addAlert()"
+                      (done)="addAlert($event)"
                       [Id]="row.id"
                       [Name]="row.name"
                       [email]="row.email"
@@ -204,10 +204,11 @@
       <ng-template let-observer #form>
         <app-userform
           [observer]="observer"
-          (done)="addAlert()"
+          (done)="addAlert($event)"
           [edit]="false"
         ></app-userform>
       </ng-template>
+
     </button>
   </div>
 </div>

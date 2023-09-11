@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+  userLeaves$ = new BehaviorSubject<any>([]);
+
   constructor(private http: HttpClient) {}
   dbUserUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/.json';
@@ -13,8 +15,6 @@ export class FirebaseService {
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json';
   dbLeavesUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/.json';
-
-
 
   addUser(user: User): Observable<any> {
     return this.http.put(
@@ -35,14 +35,12 @@ export class FirebaseService {
   }
 
   updateHoliday(holiday: any, id: any) {
-    if(id)
-    {
+    if (id) {
       return this.http.patch(
         `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
         holiday
       );
-    }
-    else {
+    } else {
       return this.http.post(
         `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json`,
         holiday
@@ -50,9 +48,10 @@ export class FirebaseService {
     }
   }
 
-  deleteHoliday(id:any):Observable<any>{
-return this.http.delete(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
-)
+  deleteHoliday(id: any): Observable<any> {
+    return this.http.delete(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`
+    );
   }
 
   updateUser(user: any, id: any) {
@@ -85,28 +84,52 @@ return this.http.delete(`https://lms-project-9b0da-default-rtdb.asia-southeast1.
     return this.http.get(this.dbLeavesUrl);
   }
 
-  getLeavesById(id: string): Observable<any> {
-    return this.http.get(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`)
+  getLeavesById(id: string) {
+    this.http
+      .get(
+        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`
+      )
+      .subscribe((data) => {
+        this.userLeaves$.next(data)});
   }
 
-  updateSL(id:string,data:number){
-    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}/leaves.json`,{sl:data})
+  deleteLeave(id: any, key: any) {
+    return this.http.delete(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`
+    );
   }
 
-  updateCL(id:string,data:number){
-    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}/leaves.json`,{cl:data})
+  updateSL(id: string, data: number) {
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}/leaves.json`,
+      { sl: data }
+    );
+  }
+
+  updateCL(id: string, data: number) {
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}/leaves.json`,
+      { cl: data }
+    );
   }
 
   requestLeave(leave: any): Observable<any> {
-    return this.http.post(  
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${leave.id}.json`
-    ,{status:"pending",...leave});
+    return this.http.post(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${leave.id}.json`,
+      { status: 'pending', ...leave }
+    );
   }
 
-  acceptLeave(key:string,id:string):Observable<any>{
-    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,{status:'approved'})
+  acceptLeave(key: string, id: string): Observable<any> {
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,
+      { status: 'approved' }
+    );
   }
-  rejectLeave(key:string,id:string):Observable<any>{
-    return this.http.patch(`https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,{status:'rejected'})
+  rejectLeave(key: string, id: string): Observable<any> {
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,
+      { status: 'rejected' }
+    );
   }
 }

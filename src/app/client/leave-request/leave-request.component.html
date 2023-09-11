@@ -1,3 +1,4 @@
+<tui-loader size="xl" [showLoader]="load" [overlay]="true">
 <div class="container">
   <mat-tab-group>
     <mat-tab label="Apply">
@@ -11,8 +12,8 @@
           {{sl}} sick leaves
         </div>
       </div>
-
-      <app-leave-form (update)="update($event)"></app-leave-form>
+      <h1 class="text-center my-1">Apply Leave</h1>
+      <app-leave-form [ID]="id"  [sl]="sl" [cl]="cl" [edit]="false" [(load)]="load" (update)="update($event)"></app-leave-form>
     </mat-tab>
     <mat-tab label="Pending"> <app-leave-list [ID]="id"  [type]="'pending'"></app-leave-list> </mat-tab>
     <mat-tab label="Completed">
@@ -20,3 +21,4 @@
     </mat-tab>
   </mat-tab-group>
 </div>
+</tui-loader>

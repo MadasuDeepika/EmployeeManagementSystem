@@ -65,7 +65,7 @@ export class UserformComponent {
         position: this.userForm.value.position!,
         role: this.userForm.value.role!
       },this.Id).subscribe(data =>{
-        this.done.emit(this.edit);
+        this.done.emit('edit');
         this.load = false;
         this.observer.complete();
       });
@@ -78,7 +78,7 @@ export class UserformComponent {
         position: this.userForm.value.position!,
         role: this.userForm.value.role!
       }).subscribe(data =>{
-        this.done.emit(this.edit);
+        this.done.emit('add');
         this.load = false;
         this.observer.complete();
       });
