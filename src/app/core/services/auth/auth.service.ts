@@ -19,21 +19,21 @@ export class AuthService {
     return JSON.parse(user).user; 
   }
 
-  isAdmin(): Observable<boolean> {
+  isAdmin() {
     let tokenExist = localStorage.getItem('token')!;
     if (JSON.parse(tokenExist).user.role == 'admin') {
-      return of(true);
+      return true
     } else {
-      return of(false);
+      return false
     }
   }
 
-  isAuthenticated(): Observable<boolean> {
+  isAuthenticated(){
     let tokenExist = localStorage.getItem('token')!;
     if (tokenExist) {
-      return of(true);
+      return true;
     } else {
-      return of(false);
+      return false;
     }
   }
 

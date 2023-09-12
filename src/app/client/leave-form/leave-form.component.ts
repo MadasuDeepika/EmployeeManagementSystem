@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-leave-form',

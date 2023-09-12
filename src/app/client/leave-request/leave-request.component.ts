@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-leave-request',

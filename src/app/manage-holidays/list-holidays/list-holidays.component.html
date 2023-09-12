@@ -42,7 +42,7 @@
 
   </div>
 
-  <tui-loader size="xl" class="mt-3" [showLoader]="loader" [overlay]="true">
+  <tui-loader size="xl" class="mt-3 mb-5" [showLoader]="loader" [overlay]="true">
     <div class="row">
       <div
         class="col-12 col-md-4 col-lg-4 my-2"
@@ -90,6 +90,9 @@
       </div>
     </div>
   </tui-loader>
+
+  <!-- Add holidays button for mobile -->
+
   <button tuiButton   size="l" (click)="showDialog(form)" class="add-mobile d-block d-md-none">
     Add <tui-svg src="tuiIconPlus"></tui-svg>
 
@@ -102,4 +105,5 @@
       ></app-holidayform>
     </ng-template>
   </button>
+
 </div>

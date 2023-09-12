@@ -6,9 +6,9 @@
   display: flex;
   height: calc(100vh);
   .hero-section {
-    width: 50%;
+    width: 60%;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -25,16 +25,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     .login-form {
       margin: 0 auto;
       width: 340px;
       padding: 4rem 1rem;
       border-radius: 10px;
-      transition: all .5s ease;
-      &:hover {
-      box-shadow: rgba(black,.1) 0px 20px 30px;
-      }
+      transition: all 0.5s ease;
+      box-shadow: rgba(black, 0.1) 0px 20px 30px;
     }
   }
   button {
@@ -47,36 +45,25 @@
     flex-direction: column-reverse;
     .hero-section {
       width: 100%;
-      display: flex;
-      flex-direction:column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      background-color: var(--tui-primary);
-      color: white;
-  
+      height: 50%;
       p {
         text-align: center;
         width: 70%;
         margin: 1rem 0;
-        font-size: .8rem;
+        font-size: 0.8rem;
         font-weight: 100;
+      }
+      img {
+        min-width: 340px;
+        max-width: 500px;
       }
     }
     .login-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 100%;
       .login-form {
-        margin: 0 auto;
-        width: 340px;
         padding: 3rem 1rem;
-        border-radius: 10px;
-        transition: all .5s ease;
-        &:hover {
-        box-shadow: rgba(black,.1) 0px 20px 30px;
-        }
+        transition: all 0.5s ease;
+        box-shadow: none;
       }
     }
     button {

@@ -7,29 +7,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TuiAppBarModule, TuiSidebarModule } from '@taiga-ui/addon-mobile';
-import { TuiActiveZoneModule, TuiItemModule } from '@taiga-ui/cdk';
 import {
   TuiAlertModule,
   TuiButtonModule,
-  TuiDataListModule,
   TuiDialogModule,
   TuiDialogService,
-  TuiDropdownModule,
-  TuiHostedDropdownModule,
-  TuiLinkModule,
   TuiLoaderModule,
   TuiNotificationModule,
-  TuiRootModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-  TuiAccordionModule,
-  TuiInputModule,
-  TuiInputPasswordModule,
-} from '@taiga-ui/kit';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { TuiInputModule, TuiInputPasswordModule } from '@taiga-ui/kit';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -37,15 +26,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TuiRootModule,
     TuiSvgModule,
-    TuiDataListModule,
-    TuiHostedDropdownModule,
-    TuiDropdownModule,
-    TuiLinkModule,
     TuiButtonModule,
-    TuiItemModule,
-    TuiAppBarModule,
     TuiAlertModule,
     TuiDialogModule,
     TuiNotificationModule,
@@ -53,9 +35,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     TuiInputPasswordModule,
     TuiTextfieldControllerModule,
     TuiLoaderModule,
-    TuiAccordionModule,
-    TuiSidebarModule,
-    TuiActiveZoneModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -66,7 +45,7 @@ export class LoginComponent {
   constructor(
     private auth: AuthService,
     private dialogs: TuiDialogService,
-    private router: Router,
+    private router: Router
   ) {}
 
   readonly loginForm = new FormGroup({
@@ -74,37 +53,41 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
+  /**
+   * Function to authenticate user
+   */
   onSubmit() {
     this.load = true;
     this.auth
       .login(
-        this.loginForm.value.id!.toLocaleLowerCase(),
+        this.loginForm.value.id!.toLowerCase(),
         this.loginForm.value.password!
       )
       .subscribe((data) => {
         if (data) {
           if (data.password === this.loginForm.value.password) {
-            if (data.role == 'admin'){
-              localStorage.setItem('token', JSON.stringify({user: data}));
-            this.router.navigate(['/dashboard/admin']);
+            if (data.role == 'admin') {
+              localStorage.setItem('token', JSON.stringify({ user: data }));
+              this.router.navigate(['/admin']);
+            } else {
+              localStorage.setItem('token', JSON.stringify({ user: data }));
+              this.router.navigate(['/user']);
             }
-            else {
-              localStorage.setItem('token', JSON.stringify({user: data}));
-              this.router.navigate(['/dashboard/user'])
-            }
-            
           } else {
             this.invalidPassword = true;
             this.load = false;
           }
         } else {
           this.load = false;
-          this.showDialogWithCustomButton();
+          this.retryDialog();
         }
       });
   }
 
-  showDialogWithCustomButton(): void {
+  /**
+   * Tui dialog component to show alert on invalid ID
+   */
+  retryDialog(): void {
     this.dialogs
       .open('ID does not exist!', {
         label: 'Oh no,',

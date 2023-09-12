@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-list-holidays',

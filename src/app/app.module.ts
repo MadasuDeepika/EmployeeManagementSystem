@@ -4,7 +4,6 @@ import {
   TuiButtonModule,
   TuiNotificationModule,
   TuiTextfieldControllerModule,
-  TUI_BUTTON_OPTIONS,
   TuiDialogModule,
   TuiAlertModule,
   TuiDataListModule,
@@ -29,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TuiActiveZoneModule, TuiItemModule } from '@taiga-ui/cdk';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';

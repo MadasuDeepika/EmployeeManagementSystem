@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TuiInputModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TuiButtonModule, TuiErrorModule, TuiGroupModule, TuiLoaderModule } from '@taiga-ui/core';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-userform',

@@ -1,5 +1,8 @@
 .leave-container {
   min-height: calc(100vh - 56px);
+  .card {
+    width: 324px;
+  }
   .muted {
     color: gray;
   }

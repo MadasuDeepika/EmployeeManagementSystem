@@ -3,7 +3,8 @@
     #drawer
     class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [autoFocus]="false"
+    [attr.role]="(isHandset$ | async) ? 'navigation' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
@@ -28,7 +29,7 @@
       >
       <a
         mat-list-item
-        routerLink="holidays"
+        routerLink="/holidays"
         routerLinkActive="is-active"
         *ngIf="isAdmin"
         ><tui-svg src="tuiIconCalendar"></tui-svg> Holidays</a
@@ -43,24 +44,23 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="appbar">
-      <button
+    <mat-toolbar class="appbar fixed-top">
+      <tui-svg
+        src="tuiIconMenuLarge"
         type="button"
         aria-label="Toggle sidenav"
-        mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <h1>Leave Management System </h1>
+      ></tui-svg>
+      <h1 class="mx-auto">Leave Management System</h1>
       <tui-svg
         src="tuiIconLogOutLarge"
         type="button"
-        class="ms-auto"
         (click)="logout()"
       ></tui-svg>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <div class="content">
+    <router-outlet ></router-outlet>
+  </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -11,7 +11,7 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TuiDialogService } from '@taiga-ui/core';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-leave-list',

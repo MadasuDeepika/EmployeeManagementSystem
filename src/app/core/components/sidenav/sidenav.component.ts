@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class SidenavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   constructor(private auth: AuthService,private router: Router){
     this.name = this.auth.getUser().name
-    this.auth.isAdmin().subscribe(res => this.isAdmin = res);     
+    this.isAdmin = this.auth.isAdmin()  
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

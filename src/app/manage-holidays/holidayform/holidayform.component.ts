@@ -19,7 +19,7 @@ import {
   TuiGroupModule,
   TuiLoaderModule,
 } from '@taiga-ui/core';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
