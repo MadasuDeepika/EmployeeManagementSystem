@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Inject } from '@angular/core';
 import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
 import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
@@ -20,6 +21,10 @@ export class ListHolidaysComponent {
     @Inject(TuiAlertService) private readonly alerts: TuiAlertService
   ) {
     this.loadHolidays();
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.holidays, event.previousIndex, event.currentIndex);
   }
 
   upcomingDate(dateString: string) {

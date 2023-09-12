@@ -1,6 +1,7 @@
 <tui-loader size="xl" [showLoader]="load" [overlay]="true">
-<div class="container">
+<div class=" body">
   <mat-tab-group>
+    <!-- First tab -->
     <mat-tab label="Apply">
       <div class="p-2">
         <div class="d-flex gap-2">
@@ -13,11 +14,13 @@
         </div>
       </div>
       <h1 class="text-center my-1">Apply Leave</h1>
-      <app-leave-form [ID]="id"  [sl]="sl" [cl]="cl" [edit]="false" [(load)]="load" (update)="update($event)"></app-leave-form>
+      <app-leave-form [ID]="id" [edit]="false" (update)="loadLeaves()"></app-leave-form>
     </mat-tab>
-    <mat-tab label="Pending"> <app-leave-list [ID]="id"  [type]="'pending'"></app-leave-list> </mat-tab>
+    <!-- Second Tab -->
+    <mat-tab label="Pending"> <app-leave-list (update)="loadLeaves()" [leaves]="leaves" [ID]="id"  [type]="'pending'"></app-leave-list> </mat-tab>
+    <!-- Third Tab -->
     <mat-tab label="Completed">
-      <app-leave-list [ID]="id" [type]="'completed'"></app-leave-list>
+      <app-leave-list (update)="loadLeaves()" [leaves]="leaves" [ID]="id" [type]="'completed'"></app-leave-list>
     </mat-tab>
   </mat-tab-group>
 </div>

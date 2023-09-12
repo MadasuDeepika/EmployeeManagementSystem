@@ -1,0 +1,17 @@
+
+.body{
+    height: calc(100vh);
+    .cl,.sl {
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(black,.1);
+    }
+    
+    .sl {
+        background-color: lightcoral;
+    }
+    
+    .cl {
+        background-color: lightblue;
+    }
+}

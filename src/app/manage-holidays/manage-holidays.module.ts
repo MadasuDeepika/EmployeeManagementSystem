@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ManageHolidaysRoutingModule } from './manage-holidays-routing.module';
 import {
   TuiBreadcrumbsModule,
-  TuiInputModule,
   TuiIslandModule,
-  TuiRadioLabeledModule,
 } from '@taiga-ui/kit';
+import {CdkDropList, CdkDrag} from '@angular/cdk/drag-drop';
+
 import {
   TuiButtonModule,
   TuiDataListModule,
@@ -39,7 +39,9 @@ import { HolidayformComponent } from './holidayform/holidayform.component';
     MatInputModule,
     TuiButtonModule,
     TuiGroupModule,
-    HolidayformComponent
+    HolidayformComponent,
+    CdkDropList,
+    CdkDrag
   ],
 })
 export class ManageHolidaysModule {}

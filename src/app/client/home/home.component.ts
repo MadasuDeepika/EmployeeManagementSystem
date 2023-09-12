@@ -3,20 +3,37 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 
 @Component({
-  selector: 'app-leave-request',
-  templateUrl: './leave-request.component.html',
-  styleUrls: ['./leave-request.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class LeaveRequestComponent {
+export class HomeComponent {
   load = false;
+  leaves:any[] = [];
   cl:any;
   sl:any;
   id:any;
 constructor(private auth: AuthService,private db: FirebaseService){
-  this.load = true;
   this.id = this.auth.getUser().id;
+  this.loadLeaves();
   this.db.getUserById(this.id).subscribe(user=>{this.cl = user.leaves.cl;this.sl = user.leaves.sl;this.load = false;});
 }
+
+loadLeaves() {  
+  this.load = true;
+  this.db.getLeavesById(this.id).subscribe((data) => {
+    let arr = Object.keys(data).map((key) => {
+      return {
+        key: key,
+        ...data[key],
+      };
+    });    
+    this.leaves = arr;
+    this.load = false;    
+  });
+}
+
+
 update(type:any){
 //   if (type == 'cl')
 //   {this.cl = this.cl - 1;

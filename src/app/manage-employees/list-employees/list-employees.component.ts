@@ -26,7 +26,9 @@ export class ListEmployeesComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  /**
+   * Function to apply filter in material table
+   */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -35,7 +37,9 @@ export class ListEmployeesComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-
+ /**
+  * Function to load users
+  */
   loadUsers() {
     this.load = true;
     this.fb.getUsers().subscribe((users: any) => {
@@ -48,21 +52,31 @@ export class ListEmployeesComponent {
       this.load = false;
     });
   }
-
+  /**
+   * Function to delete a user
+   * @param id 
+   */
   deleteUser(id: string) {
     this.fb.deleteUserById(id).subscribe((data: any) => {
       this.deleteAlert(id);
     });
   }
+
   showDialog(content: any): void {
     this.dialogs.open(content).subscribe();
   }
+  /**
+   * Tui alert component for deleting user
+   */
   deleteAlert(id: string): void {
     this.alerts
       .open(`Deleted user with id ${id}`, { label: 'Success' })
       .subscribe();
     this.loadUsers();
   }
+  /**
+   * Tui alert component for adding user
+   */
   addAlert(type:string) {
     if (type == 'add'){
       this.alerts.open(`Added new user`, { label: 'Success' }).subscribe();

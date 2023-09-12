@@ -1,12 +1,19 @@
 <div class="container leave-container pt-2 pt-lg-5">
-
-
-  <button tuiButton size="m" appearance="secondary" icon="tuiIconRefreshCcw" (click)="getLeaves()" class="mb-3">Refresh</button>
+  <button
+    tuiButton
+    size="m"
+    appearance="secondary"
+    icon="tuiIconRefreshCcw"
+    (click)="getLeaves()"
+    class="mb-3"
+  >
+    Refresh
+  </button>
 
   <tui-loader [showLoader]="load" [overlay]="true" size="xl">
     <div class="container row gap-2">
       <ng-container *ngFor="let item of arr">
-        <div class="card col-12 col-sm-4 col-lg-3" >
+        <div class="card col-12 col-sm-4 col-lg-3">
           <div
             class="card-header d-flex"
             style="cursor: pointer"
@@ -25,10 +32,11 @@
           <ng-template let-oberver #info>
             <div class="h4">User Details</div>
             <div class="display-7 d-flex flex-column gap-1">
-              <p><tui-svg src="tuiIconUserLarge"></tui-svg>  {{ name }}</p>
-              <p><tui-svg src="tuiIconMailLarge"></tui-svg>  {{ email }}</p>
+              <p><tui-svg src="tuiIconUserLarge"></tui-svg> {{ name }}</p>
+              <p><tui-svg src="tuiIconMailLarge"></tui-svg> {{ email }}</p>
               <p>
-                <tui-svg src="tuiIconBriefcaseLarge"></tui-svg>  {{ position | uppercase}}
+                <tui-svg src="tuiIconBriefcaseLarge"></tui-svg>
+                {{ position | uppercase }}
               </p>
             </div>
           </ng-template>
@@ -36,7 +44,8 @@
           <div class="card-body">
             <div>
               <span class="muted">Reason:</span>
-              <span style="text-transform: uppercase">{{ item.val.reason }} </span
+              <span style="text-transform: uppercase"
+                >{{ item.val.reason }} </span
               ><br />
               <span>
                 <span class="muted">Date(s):</span>
@@ -52,21 +61,23 @@
             <button
               mat-stroked-button
               class="text-danger"
-              (click)="reject(item.key,item.val.id)"
+              (click)="reject(item.key, item.val.id)"
             >
               Reject<tui-svg src="tuiIconClose" class="ms-1"></tui-svg>
             </button>
             <button
               mat-stroked-button
               class="ms-2 text-success"
-              (click)="accept(item.key,item.val.id)"
+              (click)="accept(item.key, item.val.id)"
             >
               Accept<tui-svg src="tuiIconCheck" class="ms-1"></tui-svg>
             </button>
           </div>
         </div>
       </ng-container>
-      <div class="text-muted h5 text-center" *ngIf="arr.length<=0">No Pending Requests</div>
+      <div class="text-muted h5 text-center" *ngIf="arr.length <= 0">
+        No Pending Requests
+      </div>
     </div>
   </tui-loader>
 </div>

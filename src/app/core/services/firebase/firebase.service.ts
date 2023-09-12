@@ -9,6 +9,9 @@ export class FirebaseService {
   userLeaves$ = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient) {}
+
+  // APIs for users,holidays and leaves
+
   dbUserUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/.json';
   dbHolidayUrl =
@@ -23,35 +26,10 @@ export class FirebaseService {
     );
   }
 
-  addHoliday(holiday: any, id: any) {
-    return this.http.put(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
-      holiday
-    );
-  }
+  // all methods for users
 
   getUsers(): Observable<any> {
     return this.http.get(this.dbUserUrl);
-  }
-
-  updateHoliday(holiday: any, id: any) {
-    if (id) {
-      return this.http.patch(
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
-        holiday
-      );
-    } else {
-      return this.http.post(
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json`,
-        holiday
-      );
-    }
-  }
-
-  deleteHoliday(id: any): Observable<any> {
-    return this.http.delete(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`
-    );
   }
 
   updateUser(user: any, id: any) {
@@ -74,23 +52,49 @@ export class FirebaseService {
     );
   }
 
+  // all holidays methods
+
+  addHoliday(holiday: any, id: any) {
+    return this.http.put(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
+      holiday
+    );
+  }
+
+  updateHoliday(holiday: any, id: any) {
+    if (id) {
+      return this.http.patch(
+        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
+        holiday
+      );
+    } else {
+      return this.http.post(
+        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json`,
+        holiday
+      );
+    }
+  }
+
+  deleteHoliday(id: any): Observable<any> {
+    return this.http.delete(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`
+    );
+  }
+
   getHolidays() {
     return this.http.get(this.dbHolidayUrl);
   }
 
-  // Leaves module
+  // All Leaves methods
 
   getLeaves(): Observable<any> {
     return this.http.get(this.dbLeavesUrl);
   }
 
-  getLeavesById(id: string) {
-    this.http
-      .get(
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`
-      )
-      .subscribe((data) => {
-        this.userLeaves$.next(data)});
+  getLeavesById(id: string): Observable<any> {
+    return this.http.get(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}.json`
+    );
   }
 
   deleteLeave(id: any, key: any) {
@@ -120,12 +124,22 @@ export class FirebaseService {
     );
   }
 
+  updateLeave(data:any,leave: any): Observable<any> {
+    console.log(data,leave);
+    
+    return this.http.patch(
+      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${data.id}/${data.key}.json`,
+      { ...leave }
+    );
+  }
+
   acceptLeave(key: string, id: string): Observable<any> {
     return this.http.patch(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,
       { status: 'approved' }
     );
   }
+
   rejectLeave(key: string, id: string): Observable<any> {
     return this.http.patch(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${id}/${key}.json`,

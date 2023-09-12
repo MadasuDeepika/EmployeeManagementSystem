@@ -3,31 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { isAuthenticatedGuard } from './core/guards/is-authenticated.guard';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { isAdminGuard } from './core/guards/is-admin.guard';
-import { newUserGuard } from './core/guards/new-user.guard';
+import { isClientGuard } from './core/guards/is-client.guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
-  {
-    path: 'home',
-    loadComponent: () =>
-      import('./landingpage/landingpage.component').then(
-        (e) => e.LandingpageComponent
-      ),
-  },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
     loadComponent: () =>
       import('./login/login.component').then((e) => e.LoginComponent),
-      canActivate:[newUserGuard],
   },
   {
     path: '',
     component: SidenavComponent,
+    canActivate: [isAuthenticatedGuard],
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'admin' },
       {
         path: 'admin',
-        canActivate: [isAuthenticatedGuard, isAdminGuard],
+        canActivate: [isAdminGuard],
         loadChildren: () =>
           import('./manage-employees/manage-employees.module').then(
             (e) => e.ManageEmployeesModule
@@ -35,13 +27,13 @@ const routes: Routes = [
       },
       {
         path: 'user',
-        canActivate: [isAuthenticatedGuard],
+        canActivate: [isClientGuard],
         loadChildren: () =>
           import('./client/client.module').then((e) => e.ClientModule),
       },
       {
         path: 'holidays',
-        canActivate: [isAuthenticatedGuard, isAdminGuard],
+        canActivate: [isAdminGuard],
         loadChildren: () =>
           import('./manage-holidays/manage-holidays.module').then(
             (e) => e.ManageHolidaysModule
@@ -49,7 +41,7 @@ const routes: Routes = [
       },
       {
         path: 'leaves',
-        canActivate: [isAuthenticatedGuard, isAdminGuard],
+        canActivate: [isAdminGuard],
         loadChildren: () =>
           import('./manage-leaves/manage-leaves.module').then(
             (e) => e.ManageLeavesModule
@@ -63,13 +55,6 @@ const routes: Routes = [
           ),
       },
     ],
-  },
-  {
-    path: '**',
-    loadComponent: () =>
-      import('./pagenotfound/pagenotfound.component').then(
-        (e) => e.PagenotfoundComponent
-      ),
   },
 ];
 

@@ -43,17 +43,18 @@
   </div>
 
   <tui-loader size="xl" class="mt-3 mb-5" [showLoader]="loader" [overlay]="true">
-    <div class="row">
+    <div class="row" cdkDropList (cdkDropListDropped)="drop($event)">
       <div
         class="col-12 col-md-4 col-lg-4 my-2"
         *ngFor="let item of holidays"
+        cdkDrag
       >
         <a
           size="l"
           class="card"
           [ngClass]="upcomingDate(item.date) ? 'bg-green' : 'bg-grey'"
           tuiIsland
-          [hoverable]="true"
+          
         >
           <div class="tui-island__content">
             <figure class="tui-island__figure">

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
-import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { HomeComponent } from './home/home.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LeaveFormComponent } from './leave-form/leave-form.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
-    LeaveRequestComponent,
+    HomeComponent,
     LeaveFormComponent,
     LeaveListComponent
   ],
