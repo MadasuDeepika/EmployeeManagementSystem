@@ -24,7 +24,7 @@ export class AuthService {
   useridValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.db.getUserById(control.value).pipe(
-        map(res => {
+        map(res => {          
           // if res is true, username exists, return true
           return res ? { useridExists: true } : null;
           // NB: Return null if there is no error

@@ -1,5 +1,5 @@
 <tui-loader size="xl" [overlay]="true" [showLoader]="load">
-<form class="container-lg" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form class="container-lg" [formGroup]="userForm"  (ngSubmit)="onSubmit()">
   <div class="tui-form__header" *ngIf="!edit">Add Employee Details</div>
   <div class="tui-form__header" *ngIf="edit">Update Employee Details</div>
   <div class="tui-form__row_multi-fields tui-form__row">
@@ -12,6 +12,7 @@
       <div class="text-danger" *ngIf="userForm.controls['id'].errors?.useridExists">
         This Id is already taken!
       </div>
+
     </div>
     <div class="tui-form__multi-field">
       <tui-input formControlName="name" tuiHintContent="A tooltip">

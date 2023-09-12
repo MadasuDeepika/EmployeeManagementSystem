@@ -71,7 +71,11 @@ export class UserformComponent {
       });
     } else {
       this.userForm = this.fb.group({
-        id: ['', [Validators.required],[this.auth.useridValidator()], {updateOn:'blur'}],
+        id: ['',{
+          updateOn:"blur", 
+          validators:[Validators.required],
+          asyncValidators:[this.auth.useridValidator()]
+        }],
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
