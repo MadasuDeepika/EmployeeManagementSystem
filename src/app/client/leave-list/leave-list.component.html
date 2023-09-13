@@ -1,4 +1,5 @@
-<table mat-table [dataSource]="dataSource" matSort>
+<div class="contain">
+<table mat-table matSortActive="from" matSortDirection="desc" [dataSource]="dataSource" matSort>
 
   <!-- Type Column -->
   <ng-container matColumnDef="type">
@@ -46,7 +47,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button
+        <div class="d-flex gap-1">        <button
           tuiButton
           size="s"
           appearance="secondary"
@@ -64,7 +65,8 @@
           (click)="showDialog(delete)"
         >
           <tui-svg src="tuiIconTrash"></tui-svg>
-        </button>
+        </button></div>
+
 
         <ng-template #delete let-observer>
           <p class="text-danger h4">Confirm Delete</p>
@@ -106,4 +108,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 <div class="h3 text-muted text-center my-3" *ngIf="!leaves.length">Its lonely here :( </div>
-
+</div>

@@ -1,66 +1,43 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [autoFocus]="false"
-    [attr.role]="(isHandset$ | async) ? 'navigation' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar
-      ><tui-svg src="tuiIconUserLarge" class="me-2"></tui-svg>
-      {{ name | uppercase }}</mat-toolbar
-    >
-    <mat-nav-list>
-      <a
-        mat-list-item
-        routerLink="user"
-        routerLinkActive="is-active"
-        *ngIf="!isAdmin"
-        ><tui-svg src="tuiIconUsers"></tui-svg> Dashboard</a
-      >
-      <a
-        mat-list-item
-        routerLink="admin"
-        routerLinkActive="is-active"
-        *ngIf="isAdmin"
-        ><tui-svg src="tuiIconUsers"></tui-svg> Employees</a
-      >
-      <a
-        mat-list-item
-        routerLink="/holidays"
-        routerLinkActive="is-active"
-        *ngIf="isAdmin"
-        ><tui-svg src="tuiIconCalendar"></tui-svg> Holidays</a
-      >
-      <a
-        mat-list-item
-        routerLink="leaves"
-        routerLinkActive="is-active"
-        *ngIf="isAdmin"
-        ><tui-svg src="tuiIconCreditCard"></tui-svg> Leaves</a
-      >
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="appbar fixed-top">
-      <tui-svg
-        src="tuiIconMenuLarge"
-        type="button"
-        aria-label="Toggle sidenav"
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      ></tui-svg>
-      <h1 class="mx-auto">Leave Management System</h1>
-      <tui-svg
-        src="tuiIconLogOutLarge"
-        type="button"
-        (click)="logout()"
-      ></tui-svg>
-    </mat-toolbar>
-    <div class="content">
-    <router-outlet ></router-outlet>
-  </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<!-- This is a reverse engineering of the "Hyperspace"
+     design from HTML5 Up! https://html5up.net/hyperspace -->
+
+<main class="main">
+  <aside class="sidebar" [ngClass]="(isHandset$ | async)? sidenav?'':'show':'' ">
+    <nav class="nav-theme">
+      <ul>
+        <div class="h3 text-white">Welcome, {{name | uppercase}}</div>
+        <li *ngIf="isAdmin">
+          <a  routerLink="/admin" routerLinkActive="is-active" (click)="sidenav = !sidenav">Dashboard</a>
+        </li>
+        <li *ngIf="!isAdmin">
+          <a  routerLink="/user" routerLinkActive="is-active" (click)="sidenav = !sidenav">Dashboard</a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a  routerLink="/holidays" routerLinkActive="is-active" (click)="sidenav = !sidenav">Holidays</a>
+        </li>
+        <li *ngIf="isAdmin"><a  routerLink="/leaves" routerLinkActive="is-active" (click)="sidenav = !sidenav">Leaves</a></li>
+        <div class="text-white hover" (click)="sidenav = !sidenav" *ngIf="isHandset$ | async"><tui-svg src="tuiIconArrowLeft"></tui-svg>Close</div>
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="aside">
+    <div class="appbar">
+      <div *ngIf="isHandset$ | async">
+        <tui-svg src="tuiIconMenuLarge" type="submit" (click)="sidenav = !sidenav"></tui-svg>
+      </div>
+      <img
+        src="../../../../assets/logo.png"
+        alt="logo"
+        width="130"
+        height="50"
+      />
+      <div class="hover" (click)="logout()">
+        <span *ngIf="!(isHandset$ | async)">Logout </span> <tui-svg src="tuiIconLogOutLarge"></tui-svg>
+      </div>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</main>

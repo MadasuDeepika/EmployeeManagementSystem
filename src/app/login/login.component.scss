@@ -6,18 +6,32 @@
   display: flex;
   height: calc(100vh);
   .hero-section {
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-color: var(--tui-primary-active);
+    background-color: #312450;
     color: white;
     p {
       margin: 1rem 0;
       font-size: 1.2rem;
       font-weight: 100;
+    }
+    img {
+      animation: fadein 1s;
+      max-width: 700px;
+    }
+    @keyframes fadein {
+      0%{
+        opacity: 0;
+        transform: scale(1.5);
+      }
+      100%{
+        opacity: 100;
+        transform: scale(1);
+      }
     }
   }
   .login-container {
@@ -25,7 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 50%;
     .login-form {
       margin: 0 auto;
       width: 340px;

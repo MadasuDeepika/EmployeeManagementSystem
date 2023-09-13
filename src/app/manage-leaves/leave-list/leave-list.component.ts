@@ -38,6 +38,18 @@ export class LeaveListComponent {
     });
   }
 
+  /**
+   * Function to find range between dates
+   * @param from
+   * @param to
+   * @returns
+   */
+  range(from: any, to: any) {
+    if (to) {
+      return (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24) + 1;
+    } else return 1;
+  }
+
   showDialog(content: any, id: string): void {
     this.fb.getUserById(id).subscribe((data) => {
       this.name = data.name;

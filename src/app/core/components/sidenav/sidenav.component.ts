@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  sidenav = true;
   name: string ='';
   isAdmin:any;
   private breakpointObserver = inject(BreakpointObserver);

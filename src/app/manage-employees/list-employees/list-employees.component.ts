@@ -61,7 +61,10 @@ export class ListEmployeesComponent {
       this.deleteAlert(id);
     });
   }
-
+  /**
+   * Tui dialog component function
+   * @param content 
+   */
   showDialog(content: any): void {
     this.dialogs.open(content).subscribe();
   }
@@ -82,7 +85,6 @@ export class ListEmployeesComponent {
       this.alerts.open(`Added new user`, { label: 'Success' }).subscribe();
     }else {
       this.alerts.open(`Updated user`, { label: 'Success' }).subscribe();
-
     }
     this.loadUsers();
   }

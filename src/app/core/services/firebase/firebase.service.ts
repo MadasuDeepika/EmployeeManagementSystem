@@ -124,9 +124,7 @@ export class FirebaseService {
     );
   }
 
-  updateLeave(data:any,leave: any): Observable<any> {
-    console.log(data,leave);
-    
+  updateLeave(data:any,leave: any): Observable<any> {    
     return this.http.patch(
       `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${data.id}/${data.key}.json`,
       { ...leave }

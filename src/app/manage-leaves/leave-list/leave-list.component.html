@@ -52,7 +52,11 @@
                 {{ item.val.from | date : "dd-MMM" }}
                 <span class="muted" *ngIf="item.val.to"> to </span>
                 {{ item.val.to | date : "dd-MMM" }}</span
-              >
+              > <br>
+              <span class="muted">Day(s):</span>
+              <span style="text-transform: uppercase"
+                >{{ range(item.val.from,item.val.to) }} </span
+              ><br />
             </div>
           </div>
 
