@@ -17,6 +17,7 @@ import {
 import { TuiItemModule } from '@taiga-ui/cdk';
 import { UserformComponent } from './userform/userform.component';
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
+import { LoaderComponent } from '../core/components/loader/loader.component';
 
 @NgModule({
   declarations: [ListEmployeesComponent],
@@ -37,6 +38,7 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
     TuiLoaderModule,
     UserformComponent,
     TuiInputModule,
+    LoaderComponent
   ],
 })
 export class ManageEmployeesModule {}

@@ -14,6 +14,7 @@ import { TuiButtonModule, TuiLoaderModule, TuiNotificationModule, TuiSvgModule }
 import { LeaveListComponent } from './leave-list/leave-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { LoaderComponent } from '../core/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatSortModule } from '@angular/material/sort';
     TuiButtonModule,
     TuiNotificationModule,
     MatSortModule,
+    LoaderComponent
   ]
 })
 export class ClientModule { }

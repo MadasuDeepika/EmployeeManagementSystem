@@ -16,11 +16,12 @@ html {
   white-space: nowrap;
 }
 
-
 .appbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #5e42a7;
+  color: white;
   box-shadow: rgba(black,.1) 0px 1px 50px;
   width:100%;
   padding: .8rem .5rem;
@@ -91,6 +92,7 @@ html {
     position: relative;
 
     img {
+      mix-blend-mode: darken;
       width: 48px;
       height: 48px;
     }

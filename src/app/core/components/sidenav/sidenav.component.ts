@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { TuiDialogService } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,9 +16,18 @@ export class SidenavComponent {
   name: string ='';
   isAdmin:any;
   private breakpointObserver = inject(BreakpointObserver);
-  constructor(private auth: AuthService,private router: Router){
+  constructor(private dialogs: TuiDialogService,
+    private auth: AuthService,private router: Router){
     this.name = this.auth.getUser().name
     this.isAdmin = this.auth.isAdmin()  
+  }
+
+   /**
+   * Tui dialog component function
+   * @param content 
+   */
+   showDialog(content: any): void {
+    this.dialogs.open(content).subscribe();
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

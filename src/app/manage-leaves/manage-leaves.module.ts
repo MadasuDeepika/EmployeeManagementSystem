@@ -6,6 +6,7 @@ import { LeaveListComponent } from './leave-list/leave-list.component';
 import { TuiBreadcrumbsModule } from '@taiga-ui/kit';
 import { TuiButtonModule, TuiLinkModule, TuiSvgModule, TuiLoaderModule} from '@taiga-ui/core';
 import { MatButtonModule } from '@angular/material/button';
+import { LoaderComponent } from '../core/components/loader/loader.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     TuiButtonModule,
     MatButtonModule,
     TuiLoaderModule,
+    LoaderComponent
   ]
 })
 export class ManageLeavesModule { }

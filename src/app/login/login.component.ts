@@ -19,6 +19,7 @@ import {
 } from '@taiga-ui/core';
 import { TuiInputModule, TuiInputPasswordModule } from '@taiga-ui/kit';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { LoaderComponent } from '../core/components/loader/loader.component';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
     TuiInputPasswordModule,
     TuiTextfieldControllerModule,
     TuiLoaderModule,
+    LoaderComponent
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

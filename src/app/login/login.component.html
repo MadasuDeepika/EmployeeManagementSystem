@@ -1,3 +1,4 @@
+<app-loader [load]="load"></app-loader>
 <div class="body">
   <!-- Hero section  -->
   <section class="hero-section">
@@ -16,7 +17,6 @@
 
     <img src="../../assets/logo.png" width="140" height="60" />
     <form class="login-form" [formGroup]="loginForm">
-      <tui-loader size="xl" [showLoader]="load" [overlay]="true">
         <h1 class="text-center tui-form__header">Login</h1>
         <div>
           <p class="wrapper wrapper_dark">
@@ -61,7 +61,6 @@
             <tui-svg src="tuiIconLogIn"></tui-svg>
           </button>
         </div>
-      </tui-loader>
     </form>
   </section>
 </div>

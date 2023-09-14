@@ -1,3 +1,4 @@
+<app-loader [load]="load"></app-loader>
 <div class="admin-body container">
   <!-- View employee list -->
 
@@ -37,7 +38,6 @@
       </div>
     </div>
 
-    <tui-loader size="xl" [showLoader]="load" [overlay]="true">
       <div class="contain">
         <mat-table
           class="mat-table"
@@ -204,7 +204,6 @@
           aria-label="Select page of users"
         ></mat-paginator>
       </div>
-    </tui-loader>
     <button
       tuiButton
       size="l"

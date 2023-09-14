@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ListHolidaysComponent } from './list-holidays/list-holidays.component';
 import { HolidayformComponent } from './holidayform/holidayform.component';
+import { LoaderComponent } from '../core/components/loader/loader.component';
 
 @NgModule({
   declarations: [ListHolidaysComponent],
@@ -41,7 +42,8 @@ import { HolidayformComponent } from './holidayform/holidayform.component';
     TuiGroupModule,
     HolidayformComponent,
     CdkDropList,
-    CdkDrag
+    CdkDrag,
+    LoaderComponent
   ],
 })
 export class ManageHolidaysModule {}
