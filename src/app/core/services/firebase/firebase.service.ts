@@ -13,15 +13,15 @@ export class FirebaseService {
   // APIs for users,holidays and leaves
 
   dbUserUrl =
-    'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/.json';
+    'https://angular-miniproject-default-rtdb.firebaseio.com/users/.json';
   dbHolidayUrl =
-    'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json';
+    'https://angular-miniproject-default-rtdb.firebaseio.com/holidays/.json';
   dbLeavesUrl =
     'https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/.json';
-
+    
   addUser(user: User): Observable<any> {
     return this.http.put(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${user.id}.json`,
+      `https://angular-miniproject-default-rtdb.firebaseio.com/users/${user.id}.json`,
       user
     );
   }
@@ -34,20 +34,20 @@ export class FirebaseService {
 
   updateUser(user: any, id: any) {
     return this.http.patch(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}.json`,
+      `https://angular-miniproject-default-rtdb.firebaseio.com/users/${id}.json`,
       user
     );
   }
 
   getUserById(id: string): Observable<any> {
     return this.http.get(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}.json`
+      `https://angular-miniproject-default-rtdb.firebaseio.com/users/${id}.json`
     );
   }
 
   deleteUserById(id: string) {
     return this.http.patch(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}.json`,
+      `https://angular-miniproject-default-rtdb.firebaseio.com/users/${id}.json`,
       { deleted: true }
     );
   }
@@ -56,7 +56,7 @@ export class FirebaseService {
 
   addHoliday(holiday: any, id: any) {
     return this.http.put(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
+      `https://angular-miniproject-default-rtdb.firebaseio.com/holidays/${id}.json`,
       holiday
     );
   }
@@ -64,12 +64,12 @@ export class FirebaseService {
   updateHoliday(holiday: any, id: any) {
     if (id) {
       return this.http.patch(
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`,
+        `https://angular-miniproject-default-rtdb.firebaseio.com/holidays/${id}.json`,
         holiday
       );
     } else {
       return this.http.post(
-        `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/.json`,
+        `https://angular-miniproject-default-rtdb.firebaseio.com/holidays/.json`,
         holiday
       );
     }
@@ -77,7 +77,7 @@ export class FirebaseService {
 
   deleteHoliday(id: any): Observable<any> {
     return this.http.delete(
-      `https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/holidays/${id}.json`
+      `https://angular-miniproject-default-rtdb.firebaseio.com/holidays/${id}.json`
     );
   }
 

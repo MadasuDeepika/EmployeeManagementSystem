@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { Injectable } from "@angular/core";
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,16 +9,19 @@ import { getDatabase } from "firebase/database";
 @Injectable({
     providedIn: 'root'
 })
+
 const firebaseConfig = {
-  apiKey: "AIzaSyARDAIqdDSdQRmcG4f0v6eNngN-6q3sjuQ",
-  authDomain: "lms-project-9b0da.firebaseapp.com",
-  projectId: "lms-project-9b0da",
-  storageBucket: "lms-project-9b0da.appspot.com",
-  messagingSenderId: "860414322925",
-  appId: "1:860414322925:web:ad85546ebff68d2023c4e4",
-  databaseURL: "https://lms-project-9b0da-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  apiKey: "AIzaSyCwb8G537H4LOTXwCNcpBtAf--vZoFJDB8",
+  authDomain: "angular-miniproject.firebaseapp.com",
+  databaseURL: "https://angular-miniproject-default-rtdb.firebaseio.com",
+  projectId: "angular-miniproject",
+  storageBucket: "angular-miniproject.appspot.com",
+  messagingSenderId: "634686676559",
+  appId: "1:634686676559:web:95bc1e120d0cb58f32143a",
+  measurementId: "G-16DJ0N8XMP"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const analytics = getAnalytics(app);
+
